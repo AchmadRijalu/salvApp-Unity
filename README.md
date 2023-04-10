@@ -1,6 +1,6 @@
-## GDSC Indonesia HackFest 2023 | Google Solution Challenge 2023
+## UNITY UNY Competition
 
-This project associated with Google HackFest Indonesia 2023 and Google Solution Challenge 2023
+
 
 ## Prerequisites
 
