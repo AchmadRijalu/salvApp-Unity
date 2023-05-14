@@ -24,7 +24,6 @@ class TransaksiService {
           'Authorization': await AuthService().getToken(),
         },
       );
-      print(response.body);
       return TransaksiSeller.fromJson(json.decode(response.body));
     } catch (e) {
       rethrow;

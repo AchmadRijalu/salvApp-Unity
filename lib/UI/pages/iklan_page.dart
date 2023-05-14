@@ -1,8 +1,13 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:camera/camera.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:salv/UI/pages/camera_page.dart';
 import 'package:salv/UI/pages/detail_iklan_pabrik_page.dart';
 import 'package:salv/UI/pages/detail_iklan_page.dart';
@@ -13,12 +18,16 @@ import 'package:salv/UI/widgets/list_iklan_widget.dart';
 import 'package:salv/blocs/iklan/iklan_bloc.dart';
 import 'package:salv/models/iklan_form_model.dart';
 import 'package:salv/models/user_model.dart';
+import 'package:http/http.dart' as http;
+import 'package:salv/services/auth_services.dart';
 
 import '../../blocs/auth/auth_bloc.dart';
 import '../../common/common.dart';
+import '../../main.dart';
 import '../../models/user_model.dart';
 import '../../models/user_model.dart';
 import '../../shared/shared_methods.dart';
+import 'camera_preview_page.dart';
 
 class IklanPage extends StatefulWidget {
   static const routeName = '/iklan';
@@ -59,13 +68,48 @@ class _IklanPageState extends State<IklanPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: blueColor,
         onPressed: () async {
-          await availableCameras().then((value) => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => CameraPage(
-                  cameras: value,
-                ),
-              )));
+          //Function with imagePicker to open and save photo.
+          initializeFirebase();
+          ImagePicker imagePicker = ImagePicker();
+          XFile? picture =
+              await imagePicker.pickImage(source: ImageSource.camera);
+          final storageRef = FirebaseStorage.instance.ref();
+          final pictureRef = storageRef.child(picture!.path);
+          String dataUrl = 'data:image/png;base64,' +
+              base64Encode(File(picture.path).readAsBytesSync());
+
+          try {
+            await pictureRef.putString(dataUrl,
+                format: PutStringFormat.dataUrl);
+            String downloadUrl = await pictureRef.getDownloadURL();
+            final response =
+                await http.post(Uri.parse("https://salv.cloud/image/upload"),
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': await AuthService().getToken(),
+                    },
+                    body: jsonEncode({"image": downloadUrl}));
+
+            if (response.statusCode == 200) {
+              final data = jsonDecode(response.body);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CameraPreviewPage(
+                            picture: data['image'],
+                          )));
+            }
+          } on FirebaseException catch (e) {
+            print(e);
+          }
+
+          // await availableCameras().then((value) => Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (_) => CameraPage(
+          //         cameras: value,
+          //       ),
+          //     )));
         },
         child: const Icon(Icons.camera_alt),
       ),
