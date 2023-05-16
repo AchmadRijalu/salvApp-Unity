@@ -30,7 +30,8 @@ class _SignupPageState extends State<SignupPage> {
       TextEditingController(text: '');
 
   final _keyState = GlobalKey<FormState>();
-  
+
+  bool _obscureText = true;
 
   dynamic tipe;
 
@@ -42,6 +43,13 @@ class _SignupPageState extends State<SignupPage> {
       return false;
     }
     return true;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _obscureText = true;
+    super.initState();
   }
 
   @override
@@ -75,18 +83,46 @@ class _SignupPageState extends State<SignupPage> {
                   color: whiteColor, borderRadius: BorderRadius.circular(8)),
               child: Column(children: [
                 CustomFormField(
-                  
                   title: "Nama Pengguna / Username",
                   controller: usernameController,
                 ),
                 const SizedBox(
                   height: 18,
                 ),
-                CustomFormField(
-                  title: "Kata Sandi",
-                  controller: katasandiController,
-                  obscureText: true,
-                ),
+                Container(child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Kata Sandi",
+                      style: blackTextStyle.copyWith(
+                          fontWeight: FontWeight.w600, fontSize: 14),
+                      textAlign: TextAlign.start,
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    //PASSWORD
+                    TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: katasandiController,
+                      obscureText: _obscureText,
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            icon: _obscureText
+                                ? Icon(Icons.visibility_off)
+                                : Icon(Icons.visibility),
+                            onPressed: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                          ),
+                          contentPadding: const EdgeInsets.all(12),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8))),
+                    ),
+                  ],
+                ),),
                 const SizedBox(
                   height: 18,
                 ),
@@ -111,10 +147,8 @@ class _SignupPageState extends State<SignupPage> {
                   height: 12,
                 ),
                 DropdownButtonFormField(
-                  
                   decoration: InputDecoration(
                       focusColor: greenColor,
-                      
                       contentPadding: const EdgeInsets.all(12),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8))),
@@ -143,7 +177,6 @@ class _SignupPageState extends State<SignupPage> {
                         builder: (context) {
                           return SignupWilayahPage(
                               data: SignupFormModel(
-                                
                                   username: usernameController.text,
                                   name: usernameController.text,
                                   password: katasandiController.text,

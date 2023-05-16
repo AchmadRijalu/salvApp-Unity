@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -62,11 +63,25 @@ class _IklanPageState extends State<IklanPage> {
     }
   }
 
+  // void filterListIklan(String enteredTitle) {
+  //   List results = [];
+  //   _iklanBloc.emit(IklanGetSuccess());
+  //   if (enteredTitle.isEmpty) {
+  //     // if the search field is empty or only contains white-space, we'll display all users
+  //     results = state.iklanSeller!.data;
+  //   } else {
+  //     results = state.iklanSeller!.data
+  //         .where((iklan) => iklan.title.contains(enteredTitle.toLowerCase()))
+  //         .toList();
+  //     // we use the toLowerCase() method to make it case-insensitive
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: blueColor,
+        backgroundColor: greenColor,
         onPressed: () async {
           //Function with imagePicker to open and save photo.
           initializeFirebase();
@@ -77,7 +92,6 @@ class _IklanPageState extends State<IklanPage> {
           final pictureRef = storageRef.child(picture!.path);
           String dataUrl = 'data:image/png;base64,' +
               base64Encode(File(picture.path).readAsBytesSync());
-
           try {
             await pictureRef.putString(dataUrl,
                 format: PutStringFormat.dataUrl);
@@ -126,16 +140,19 @@ class _IklanPageState extends State<IklanPage> {
           });
         },
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 37),
+            padding: const EdgeInsets.all(0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(
                   height: 44,
                 ),
-                Row(children: [Image.asset('assets/image/logo-png.png')]),
+                Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 37),
+                    child: Row(
+                        children: [Image.asset('assets/image/logo-png.png')])),
                 const SizedBox(
-                  height: 17,
+                  height: 12,
                 ),
                 Expanded(
                     child: SingleChildScrollView(
@@ -146,151 +163,261 @@ class _IklanPageState extends State<IklanPage> {
                           buildTambahIklan(context, usernameIklanA),
                         ],
                         // Text(userList.length.toString()),
-                        Row(
-                          children: [
-                            Text(
-                              "Lihat Iklan yang \nsedang berlangsung",
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 20, fontWeight: FontWeight.w700),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 6,
-                        ),
                         if (userType == "seller") ...[
-                          BlocProvider(
-                            create: (context) => _iklanBloc,
-                            child: BlocBuilder<IklanBloc, IklanState>(
-                              builder: (context, state) {
-                                if (state is IklanLoading && !isRefresh ||
-                                    isRefresh) {
-                                  return Container(
-                                      margin: const EdgeInsets.only(top: 40),
-                                      child: Center(
-                                        child: CircularProgressIndicator(
-                                            color: greenColor),
-                                      ));
-                                }
-                                if (state is IklanGetSuccess) {
-                                  return ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: state.iklanSeller!.data.length,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemBuilder: (context, index) {
-                                      var iklan =
-                                          state.iklanSeller!.data[index];
-                                      getAdvertisementId = iklan.id;
-                                      return ListIklan(
-                                        progressBarIndicator:
-                                            iklan.ongoingWeight /
-                                                iklan.requestedWeight,
-                                        title: iklan.title,
-                                        price: iklan.price,
-                                        onGoingWeight: iklan.ongoingWeight,
-                                        requestedWeight: iklan.requestedWeight,
-                                        onTap: () {
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                            builder: (context) {
-                                              return DetailIklanPage(
-                                                maxProgress:
-                                                    iklan.requestedWeight,
-                                                advertisementId: iklan.id,
-                                                iklanProgress:
-                                                    (iklan.ongoingWeight /
-                                                        iklan.requestedWeight),
-                                              );
-                                            },
-                                          ));
-                                        },
-                                      );
-                                    },
-                                  );
-                                }
-                                if (state is IklanFailed) {
-                                  return Center(
-                                    child: Text(
-                                      "Terjadi Kesalahan :(",
-                                      style: blackTextStyle.copyWith(
-                                          fontSize: 16, fontWeight: semiBold),
-                                    ),
-                                  );
-                                }
-                                return Container();
-                              },
+                          Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 37),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {}, // Handle your onTap
+                                          child: Ink(
+                                            child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.location_on,
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 2,
+                                                      ),
+                                                      Text(
+                                                        "Komplek Pusvetma, Jl Ayani",
+                                                        style: blackTextStyle
+                                                            .copyWith(
+                                                                fontWeight:
+                                                                    medium),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 2,
+                                                      ),
+                                                      Icon(
+                                                        Icons.arrow_drop_down,
+                                                      )
+                                                    ],
+                                                  ),
+                                                ]),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "Lihat Iklan yang \nsedang berlangsung",
+                                        style: blackTextStyle.copyWith(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w700),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                          flex: 4,
+                                          child: CupertinoTextField(
+                                            // controller: controller,
+                                            prefix: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: Icon(
+                                                Icons.search,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            prefixMode:
+                                                OverlayVisibilityMode.always,
+                                            padding: const EdgeInsets.all(10),
+                                            placeholder: "Cari Iklan",
+
+                                            placeholderStyle:
+                                                TextStyle(color: Colors.black),
+                                            onChanged: (value) {},
+                                            // ((value) => SearchList(value))
+                                          )),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  )
+                                ],
+                              ))
+                        ],
+
+                        if (userType == "seller") ...[
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 37),
+                            child: BlocProvider(
+                              create: (context) => _iklanBloc,
+                              child: BlocBuilder<IklanBloc, IklanState>(
+                                builder: (context, state) {
+                                  if (state is IklanLoading && !isRefresh ||
+                                      isRefresh) {
+                                    return Container(
+                                        margin: const EdgeInsets.only(top: 40),
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                              color: greenColor),
+                                        ));
+                                  }
+                                  if (state is IklanGetSuccess) {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: state.iklanSeller!.data.length,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemBuilder: (context, index) {
+                                        var iklan =
+                                            state.iklanSeller!.data[index];
+                                        getAdvertisementId = iklan.id;
+                                        return ListIklan(
+                                          progressBarIndicator:
+                                              iklan.ongoingWeight /
+                                                  iklan.requestedWeight,
+                                          title: iklan.title,
+                                          price: iklan.price,
+                                          onGoingWeight: iklan.ongoingWeight,
+                                          requestedWeight:
+                                              iklan.requestedWeight,
+                                          onTap: () {
+                                            Navigator.push(context,
+                                                MaterialPageRoute(
+                                              builder: (context) {
+                                                return DetailIklanPage(
+                                                  maxProgress:
+                                                      iklan.requestedWeight,
+                                                  advertisementId: iklan.id,
+                                                  iklanProgress: (iklan
+                                                          .ongoingWeight /
+                                                      iklan.requestedWeight),
+                                                );
+                                              },
+                                            ));
+                                          },
+                                        );
+                                      },
+                                    );
+                                  }
+                                  if (state is IklanFailed) {
+                                    return Center(
+                                      child: Text(
+                                        "Terjadi Kesalahan :(",
+                                        style: blackTextStyle.copyWith(
+                                            fontSize: 16, fontWeight: semiBold),
+                                      ),
+                                    );
+                                  }
+                                  return Container();
+                                },
+                              ),
                             ),
                           ),
                         ] else if (userType == "buyer") ...[
-                          BlocProvider(
-                            create: (context) =>
-                                IklanBloc()..add(IklanGetAllBuyer(userId)),
-                            child: BlocConsumer<IklanBloc, IklanState>(
-                              listener: (context, state) {},
-                              builder: (context, state) {
-                                if (state is IklanLoading) {
-                                  return Container(
-                                      margin: const EdgeInsets.only(top: 40),
-                                      child: Center(
-                                        child: CircularProgressIndicator(
-                                            color: greenColor),
-                                      ));
-                                }
-
-                                if (state is IklanBuyerGetSuccess) {
-                                  return ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: state.iklanBuyer!.data.length,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemBuilder: (context, index) {
-                                      var iklan = state.iklanBuyer!.data[index];
-
-                                      getAdvertisementId = iklan.id;
-                                      String iklanDate = iklan.endDate;
-                                      final iklanDateConv =
-                                          iklanDate.indexOf("2023", 0);
-                                      return ListIklanPabrik(
-                                        title: iklan.title,
-                                        progressBarIndicator:
-                                            iklan.ongoingWeight /
-                                                iklan.requestedWeight,
-                                        ongoing_weight: iklan.ongoingWeight,
-                                        requested_weight: iklan.requestedWeight,
-                                        endDate: iklan.endDate
-                                            .substring(0, iklanDateConv),
-                                        onTap: () {
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                            builder: (context) {
-                                              return DetailIklanPage(
-                                                advertisementId: iklan.id,
-                                                iklanProgress:
-                                                    iklan.ongoingWeight /
-                                                        iklan.requestedWeight,
-                                              );
-                                            },
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 37),
+                            child: Column(children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Lihat Iklan yang \nsedang berlangsung",
+                                    style: blackTextStyle.copyWith(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700),
+                                  )
+                                ],
+                              ),
+                              BlocProvider(
+                                create: (context) =>
+                                    IklanBloc()..add(IklanGetAllBuyer(userId)),
+                                child: BlocConsumer<IklanBloc, IklanState>(
+                                  listener: (context, state) {},
+                                  builder: (context, state) {
+                                    if (state is IklanLoading) {
+                                      return Container(
+                                          margin:
+                                              const EdgeInsets.only(top: 40),
+                                          child: Center(
+                                            child: CircularProgressIndicator(
+                                                color: greenColor),
                                           ));
-                                          // context
-                                          //     .read<IklanBloc>()
-                                          //     .add(IklanGetDetailBuyer(iklan.id));
+                                    }
+
+                                    if (state is IklanBuyerGetSuccess) {
+                                      return ListView.builder(
+                                        shrinkWrap: true,
+                                        itemCount:
+                                            state.iklanBuyer!.data.length,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemBuilder: (context, index) {
+                                          var iklan =
+                                              state.iklanBuyer!.data[index];
+
+                                          getAdvertisementId = iklan.id;
+                                          String iklanDate = iklan.endDate;
+                                          final iklanDateConv =
+                                              iklanDate.indexOf("2023", 0);
+                                          return ListIklanPabrik(
+                                            title: iklan.title,
+                                            progressBarIndicator:
+                                                iklan.ongoingWeight /
+                                                    iklan.requestedWeight,
+                                            ongoing_weight: iklan.ongoingWeight,
+                                            requested_weight:
+                                                iklan.requestedWeight,
+                                            endDate: iklan.endDate
+                                                .substring(0, iklanDateConv),
+                                            onTap: () {
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(
+                                                builder: (context) {
+                                                  return DetailIklanPage(
+                                                    advertisementId: iklan.id,
+                                                    iklanProgress: iklan
+                                                            .ongoingWeight /
+                                                        iklan.requestedWeight,
+                                                  );
+                                                },
+                                              ));
+                                              // context
+                                              //     .read<IklanBloc>()
+                                              //     .add(IklanGetDetailBuyer(iklan.id));
+                                            },
+                                          );
                                         },
                                       );
-                                    },
-                                  );
-                                }
+                                    }
 
-                                if (state is IklanFailed) {
-                                  return Center(
-                                    child: Text(
-                                      "Terjadi Kesalahan :(",
-                                      style: blackTextStyle.copyWith(
-                                          fontSize: 16, fontWeight: semiBold),
-                                    ),
-                                  );
-                                }
-                                return Container();
-                              },
-                            ),
+                                    if (state is IklanFailed) {
+                                      return Center(
+                                        child: Text(
+                                          "Terjadi Kesalahan :(",
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 16,
+                                              fontWeight: semiBold),
+                                        ),
+                                      );
+                                    }
+                                    return Container();
+                                  },
+                                ),
+                              )
+                            ]),
                           )
                         ],
                       ]),
@@ -304,6 +431,7 @@ class _IklanPageState extends State<IklanPage> {
 
 Widget buildTambahIklan(BuildContext context, String? usernameIklan) {
   return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 37),
     width: double.infinity,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

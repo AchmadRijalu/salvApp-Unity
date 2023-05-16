@@ -8,15 +8,24 @@ import 'package:salv/common/common.dart';
 class ListIklan extends StatelessWidget {
   dynamic onGoingWeight;
   dynamic requestedWeight;
-  
-   dynamic? progressBarIndicator;
+
+  dynamic? progressBarIndicator;
   dynamic price;
   String? title;
   String? category;
   String? enddate;
 
   final VoidCallback? onTap;
-  ListIklan({super.key, this.title, this.onTap, this.category, this.enddate, this.onGoingWeight, this.price, this.requestedWeight, this.progressBarIndicator});
+  ListIklan(
+      {super.key,
+      this.title,
+      this.onTap,
+      this.category,
+      this.enddate,
+      this.onGoingWeight,
+      this.price,
+      this.requestedWeight,
+      this.progressBarIndicator});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +33,15 @@ class ListIklan extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.only(bottom: 18),
-        decoration: BoxDecoration(
-            color: greenColor, borderRadius: BorderRadius.circular(8)),
-        height: 174,
+        margin: const EdgeInsets.only(bottom: 20),
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            blurRadius: 2.0,
+            offset: Offset(0, 2), // changes the position of the shadow
+          ),
+        ], color: whiteColor, borderRadius: BorderRadius.circular(8)),
+        height: 160,
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Expanded(
@@ -54,8 +68,9 @@ class ListIklan extends StatelessWidget {
                                           child: Text(
                                             title!,
                                             overflow: TextOverflow.clip,
-                                            style: whiteTextStyle.copyWith(
-                                                fontSize: 16),
+                                            style: blackTextStyle.copyWith(
+                                                fontSize: 16,
+                                                fontWeight: semiBold),
                                           ),
                                         )
                                       ],
@@ -75,7 +90,7 @@ class ListIklan extends StatelessWidget {
                                         children: [
                                           Text(
                                             "+Rp. ${price}/kg",
-                                            style: whiteTextStyle.copyWith(
+                                            style: blackTextStyle.copyWith(
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 10),
                                           )
@@ -88,20 +103,20 @@ class ListIklan extends StatelessWidget {
                                           children: [
                                             Text(
                                               "Terkumpul ",
-                                              style: whiteTextStyle.copyWith(
+                                              style: blackTextStyle.copyWith(
                                                   fontSize: 10),
                                             ),
                                             Text("${onGoingWeight}",
-                                                style: whiteTextStyle.copyWith(
+                                                style: blackTextStyle.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 10)),
                                             Text(" Kg",
-                                                style: whiteTextStyle.copyWith(
+                                                style: blackTextStyle.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 10)),
                                             Text(
                                               "/ ${requestedWeight} kg ",
-                                              style: whiteTextStyle.copyWith(
+                                              style: blackTextStyle.copyWith(
                                                   fontSize: 10),
                                             ),
                                           ],
@@ -111,16 +126,16 @@ class ListIklan extends StatelessWidget {
                               ))
                             ]),
                           )),
-                      Expanded(
-                          flex: 2,
-                          child: Container(
-                            child: Align(
-                                alignment: Alignment.topRight,
-                                child: Image.asset(
-                                  "assets/image/image_sampah.png",
-                                  fit: BoxFit.fill,
-                                )),
-                          )),
+                      // Expanded(
+                      //     flex: 2,
+                      //     child: Container(
+                      //       child: Align(
+                      //           alignment: Alignment.topRight,
+                      //           child: Image.asset(
+                      //             "assets/image/image_sampah.png",
+                      //             fit: BoxFit.fill,
+                      //           )),
+                      //     )),
                     ]),
                   ),
                 ],
@@ -137,9 +152,9 @@ class ListIklan extends StatelessWidget {
                     margin: const EdgeInsets.only(left: 9),
                     child: LinearPercentIndicator(
                       lineHeight: 27,
-                      percent: onGoingWeight/requestedWeight,
+                      percent: onGoingWeight / requestedWeight,
                       animation: true,
-                      progressColor: Colors.yellow,
+                      progressColor: greenColor,
                       backgroundColor: greyColor,
                       barRadius: Radius.circular(8),
                     ),
@@ -152,11 +167,11 @@ class ListIklan extends StatelessWidget {
                       children: [
                         Text(
                           "0 Kg",
-                          style: whiteTextStyle.copyWith(fontSize: 16),
+                          style: blackTextStyle.copyWith(fontSize: 16),
                         ),
                         Text(
                           "${requestedWeight}",
-                          style: whiteTextStyle.copyWith(fontSize: 16),
+                          style: blackTextStyle.copyWith(fontSize: 16),
                         )
                       ],
                     ),
@@ -179,17 +194,15 @@ class ListIklanPabrik extends StatelessWidget {
   dynamic? progressBarIndicator;
 
   late final VoidCallback? onTap;
-  ListIklanPabrik({
-    super.key,
-    this.title,
-    this.onTap,
-    this.endDate,
-    this.ongoing_weight,
-    this.requested_weight,
-    this.progressBarIndicator
-  });
+  ListIklanPabrik(
+      {super.key,
+      this.title,
+      this.onTap,
+      this.endDate,
+      this.ongoing_weight,
+      this.requested_weight,
+      this.progressBarIndicator});
 
-  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -197,9 +210,14 @@ class ListIklanPabrik extends StatelessWidget {
       child: Container(
         width: double.infinity,
         margin: const EdgeInsets.only(bottom: 18),
-        decoration: BoxDecoration(
-            color: greenColor, borderRadius: BorderRadius.circular(8)),
-        height: 174,
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            blurRadius: 2.0,
+            offset: Offset(0, 2), // changes the position of the shadow
+          ),
+        ], color: whiteColor, borderRadius: BorderRadius.circular(8)),
+        height: 160,
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Expanded(
@@ -226,8 +244,9 @@ class ListIklanPabrik extends StatelessWidget {
                                           child: Text(
                                             title!,
                                             overflow: TextOverflow.clip,
-                                            style: whiteTextStyle.copyWith(
-                                                fontSize: 16),
+                                            style: blackTextStyle.copyWith(
+                                                fontSize: 16,
+                                                fontWeight: semiBold),
                                           ),
                                         )
                                       ],
@@ -247,7 +266,7 @@ class ListIklanPabrik extends StatelessWidget {
                                         children: [
                                           Text(
                                             "Iklan selesai pada ${endDate}",
-                                            style: whiteTextStyle.copyWith(
+                                            style: blackTextStyle.copyWith(
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 10),
                                           )
@@ -260,20 +279,20 @@ class ListIklanPabrik extends StatelessWidget {
                                           children: [
                                             Text(
                                               "Terkumpul ",
-                                              style: whiteTextStyle.copyWith(
+                                              style: blackTextStyle.copyWith(
                                                   fontSize: 10),
                                             ),
                                             Text("${ongoing_weight}",
-                                                style: whiteTextStyle.copyWith(
+                                                style: blackTextStyle.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 10)),
                                             Text(" Kg / ",
-                                                style: whiteTextStyle.copyWith(
+                                                style: blackTextStyle.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 10)),
                                             Text(
                                               "${requested_weight} Kg",
-                                              style: whiteTextStyle.copyWith(
+                                              style: blackTextStyle.copyWith(
                                                   fontSize: 10),
                                             ),
                                           ],
@@ -283,16 +302,16 @@ class ListIklanPabrik extends StatelessWidget {
                               ))
                             ]),
                           )),
-                      Expanded(
-                          flex: 2,
-                          child: Container(
-                            child: Align(
-                                alignment: Alignment.topRight,
-                                child: Image.asset(
-                                  "assets/image/image_sampah.png",
-                                  fit: BoxFit.fill,
-                                )),
-                          )),
+                      // Expanded(
+                      //     flex: 2,
+                      //     child: Container(
+                      //       child: Align(
+                      //           alignment: Alignment.topRight,
+                      //           child: Image.asset(
+                      //             "assets/image/image_sampah.png",
+                      //             fit: BoxFit.fill,
+                      //           )),
+                      //     )),
                     ]),
                   ),
                 ],
@@ -311,7 +330,7 @@ class ListIklanPabrik extends StatelessWidget {
                       lineHeight: 27,
                       percent: progressBarIndicator,
                       animation: true,
-                      progressColor: blueColor,
+                      progressColor: greenColor,
                       backgroundColor: greyColor,
                       barRadius: Radius.circular(8),
                     ),
@@ -324,11 +343,11 @@ class ListIklanPabrik extends StatelessWidget {
                       children: [
                         Text(
                           "0 Kg",
-                          style: whiteTextStyle.copyWith(fontSize: 16),
+                          style: blackTextStyle.copyWith(fontSize: 16),
                         ),
                         Text(
                           "${requested_weight} Kg",
-                          style: whiteTextStyle.copyWith(fontSize: 16),
+                          style: blackTextStyle.copyWith(fontSize: 16),
                         )
                       ],
                     ),

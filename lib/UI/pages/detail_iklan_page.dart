@@ -88,10 +88,19 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                         horizontal: 17,
                                                         vertical: 16),
                                                 decoration: BoxDecoration(
-                                                    color: greenColor,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8)),
+                                                  color: whiteColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.5),
+                                                      blurRadius: 5.0,
+                                                      offset: Offset(0,
+                                                          3), // changes the position of the shadow
+                                                    ),
+                                                  ],
+                                                ),
                                                 child: Column(children: [
                                                   Row(
                                                     mainAxisAlignment:
@@ -100,12 +109,12 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Nama Iklan",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state.iklanBuyerDetail!
                                                             .data.title,
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -117,7 +126,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -129,12 +138,12 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Kategori",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state.iklanBuyerDetail!
                                                             .data.category,
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -146,7 +155,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -158,7 +167,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Ketersediaan Sistem",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Flexible(
                                                           child: Container(
@@ -180,11 +189,10 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                               textAlign:
                                                                   TextAlign
                                                                       .right,
-                                                              style: whiteTextStyle
+                                                              style: blackTextStyle
                                                                   .copyWith(
                                                                       fontWeight:
-                                                                          FontWeight
-                                                                              .w600),
+                                                                          semiBold),
                                                             )
                                                           ],
                                                         ),
@@ -195,7 +203,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -207,12 +215,12 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Lokasi Tujuan",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state.iklanBuyerDetail!
                                                             .data.location,
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -224,7 +232,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -236,14 +244,14 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Spesifikasi",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state
                                                             .iklanBuyerDetail!
                                                             .data
                                                             .additionalInformation,
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -272,7 +280,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                         horizontal: 17,
                                                         vertical: 16),
                                                 decoration: BoxDecoration(
-                                                    color: greenColor,
+                                                    color: whiteColor,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8)),
@@ -284,11 +292,11 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Berat Minimum",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         "${state.iklanBuyerDetail!.data.minimumWeight.toString()} kg",
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -300,7 +308,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -312,11 +320,11 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Berat Maksimum",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         "${state.iklanBuyerDetail!.data.maximumWeight.toString()} kg",
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -328,7 +336,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -340,11 +348,11 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Pengeluaran",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         "${state.iklanBuyerDetail!.data.price.toString()},- / Kilogram",
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -366,7 +374,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                           .symmetric(
                                                       horizontal: 12),
                                                   decoration: BoxDecoration(
-                                                      color: greenColor,
+                                                      color: whiteColor,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8)),
@@ -378,7 +386,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                       children: [
                                                         Text(
                                                           "Tidak ada Batas Kadaluarsa",
-                                                          style: whiteTextStyle
+                                                          style: blackTextStyle
                                                               .copyWith(
                                                                   fontWeight:
                                                                       semiBold,
@@ -398,7 +406,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                           LinearPercentIndicator(
                                                         trailing: Text(
                                                           "${state.iklanBuyerDetail!.data.maximumWeight.toString()} Kg",
-                                                          style: whiteTextStyle
+                                                          style: blackTextStyle
                                                               .copyWith(
                                                                   fontWeight:
                                                                       semiBold,
@@ -499,7 +507,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                           children: [
                                                             Text(
                                                               "Dibuat: 11 Februari 2021",
-                                                              style: whiteTextStyle
+                                                              style: blackTextStyle
                                                                   .copyWith(
                                                                       fontWeight:
                                                                           medium,
@@ -596,8 +604,8 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                             lineHeight: 27,
                                             percent: widget.iklanProgress,
                                             animation: true,
-                                            progressColor: Colors.yellow,
-                                            backgroundColor: greyColor,
+                                            progressColor: greenColor,
+                                            backgroundColor: Colors.grey[350],
                                             barRadius: Radius.circular(8),
                                           ),
                                         )),
@@ -624,17 +632,32 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                               )
                                             ],
                                           ),
-                                        ))
+                                        )),
+                                        
+                                        const SizedBox(height: 20),
+                                        CustomFilledButton(
+                                          width: 200,
+                                          title: "Buat Penawaran",
+                                          onPressed: () {
+                                            Navigator.push(context,
+                                                MaterialPageRoute(
+                                              builder: (context) {
+                                                return FormJualLimbahPage(
+                                                  adsId: widget.advertisementId,
+                                                  userId: userId,
+                                                );
+                                              },
+                                            ));
+                                          },
+                                        ),
                                       ],
                                     ),
                                   )),
-                                  const SizedBox(
-                                    height: 24,
-                                  ),
+ 
 
                                   // if pabrik
                                   Expanded(
-                                      flex: 4,
+                                      flex: 2,
                                       child: Container(
                                         child: Column(
                                             crossAxisAlignment:
@@ -647,7 +670,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                         horizontal: 17,
                                                         vertical: 16),
                                                 decoration: BoxDecoration(
-                                                    color: greenColor,
+                                                    color: whiteColor,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8)),
@@ -659,12 +682,12 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Nama Iklan",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state.iklanSellerDetail!
                                                             .data.title,
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -676,7 +699,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -688,12 +711,12 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Kategori",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state.iklanSellerDetail!
                                                             .data.category,
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -705,7 +728,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -717,7 +740,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Ketersediaan Sistem",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Flexible(
                                                           child: Column(
@@ -729,7 +752,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                                     0
                                                                 ? "Diantar pemilik Limbah"
                                                                 : "Diambil di pemilik limbah",
-                                                            style: whiteTextStyle
+                                                            style: blackTextStyle
                                                                 .copyWith(
                                                                     fontWeight:
                                                                         FontWeight
@@ -748,7 +771,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -760,12 +783,12 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Lokasi Tujuan",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state.iklanSellerDetail!
                                                             .data.location,
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -777,7 +800,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -789,7 +812,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Spesifikasi",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         state.iklanSellerDetail!.data
@@ -800,7 +823,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                                 .data
                                                                 .additionalInformation
                                                             : "-",
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -829,7 +852,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                         horizontal: 17,
                                                         vertical: 16),
                                                 decoration: BoxDecoration(
-                                                    color: greenColor,
+                                                    color: whiteColor,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8)),
@@ -841,11 +864,11 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Berat Minimum",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         "${state.iklanSellerDetail!.data.minimumWeight.toString()} kg",
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -857,7 +880,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -869,11 +892,11 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Berat Maksimum",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         "${state.iklanSellerDetail!.data.maximumWeight.toString()} kg",
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -885,7 +908,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     height: 12,
                                                   ),
                                                   Divider(
-                                                    color: whiteColor,
+                                                    color: greyColor,
                                                   ),
                                                   const SizedBox(
                                                     height: 12,
@@ -897,11 +920,11 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                     children: [
                                                       Text(
                                                         "Pengeluaran",
-                                                        style: whiteTextStyle,
+                                                        style: blackTextStyle,
                                                       ),
                                                       Text(
                                                         "+Rp.${state.iklanSellerDetail!.data.price},- / Kilogram",
-                                                        style: whiteTextStyle
+                                                        style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
@@ -911,24 +934,6 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                   ),
                                                 ]),
                                               ),
-                                              const SizedBox(
-                                                height: 48,
-                                              ),
-                                              CustomFilledButton(
-                                                title: "Buat Penawaran",
-                                                onPressed: () {
-                                                  Navigator.push(context,
-                                                      MaterialPageRoute(
-                                                    builder: (context) {
-                                                      return FormJualLimbahPage(
-                                                        adsId: widget
-                                                            .advertisementId,
-                                                        userId: userId,
-                                                      );
-                                                    },
-                                                  ));
-                                                },
-                                              )
                                             ]),
                                       )),
 
@@ -968,7 +973,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                           .symmetric(
                                                       horizontal: 12),
                                                   decoration: BoxDecoration(
-                                                      color: greenColor,
+                                                      color: whiteColor,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8)),
@@ -980,7 +985,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                       children: [
                                                         Text(
                                                           "Tidak ada Batas Kadaluarsa",
-                                                          style: whiteTextStyle
+                                                          style: blackTextStyle
                                                               .copyWith(
                                                                   fontWeight:
                                                                       semiBold,
@@ -1000,7 +1005,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                           LinearPercentIndicator(
                                                         trailing: Text(
                                                           "Kg",
-                                                          style: whiteTextStyle
+                                                          style: blackTextStyle
                                                               .copyWith(
                                                                   fontWeight:
                                                                       semiBold,
@@ -1040,7 +1045,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                           children: [
                                                             Text(
                                                               "Dibuat: 11 Februari 2021",
-                                                              style: whiteTextStyle
+                                                              style: blackTextStyle
                                                                   .copyWith(
                                                                       fontWeight:
                                                                           medium,

@@ -53,25 +53,25 @@ class _BerandaPageState extends State<BerandaPage> {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        "Wah, limbah makanan \nmana yang paling sering \nAnda jual?  Yuk lihat-lihat!",
-                        style: blackTextStyle.copyWith(
-                            fontSize: 20, fontWeight: FontWeight.w700),
-                      )
+                      if (userType == "seller") ...[
+                        Text(
+                          "Wah, limbah makanan \nmana yang paling sering \nAnda jual?  Yuk lihat-lihat!",
+                          style: blackTextStyle.copyWith(
+                              fontSize: 20, fontWeight: FontWeight.w700),
+                        ),
+                      ] else if (userType == "buyer") ...[
+                        Text(
+                          "Wah, limbah makanan \nmana yang paling sering \nAnda beli?  Yuk lihat-lihat!",
+                          style: blackTextStyle.copyWith(
+                              fontSize: 20, fontWeight: FontWeight.w700),
+                        )
+                      ],
                     ],
                   ),
                   const SizedBox(
                     height: 17,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "Coba ketuk salah satu kategori limbah \nmakanannya.",
-                        style: greyTextStyle.copyWith(
-                            fontSize: 12, fontWeight: FontWeight.w400),
-                      )
-                    ],
-                  ),
+                 
                   const SizedBox(
                     height: 6,
                   ),
@@ -100,10 +100,7 @@ class _BerandaPageState extends State<BerandaPage> {
                                   return LimbahBerandaPage(
                                     title: berandaSeller.category,
                                     price: berandaSeller.finishedWeight,
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, BerandaDetailPage.routeName);
-                                    },
+                                    onTap: () {},
                                   );
                                 });
                           }
@@ -145,10 +142,7 @@ class _BerandaPageState extends State<BerandaPage> {
                                 return LimbahBerandaPage(
                                   title: "${berandaBuyer.category}",
                                   price: berandaBuyer.finishedWeight,
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, BerandaDetailPage.routeName);
-                                  },
+                                  onTap: () {},
                                 );
                               },
                             );

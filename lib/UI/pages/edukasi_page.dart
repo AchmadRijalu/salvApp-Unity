@@ -68,9 +68,7 @@ class _EdukasiPageState extends State<EdukasiPage> {
                                   )
                                 ],
                               ),
-                              const SizedBox(
-                                height: 46,
-                              ),
+                            
                               ListView.builder(
                                 shrinkWrap: true,
                                 physics: NeverScrollableScrollPhysics(),

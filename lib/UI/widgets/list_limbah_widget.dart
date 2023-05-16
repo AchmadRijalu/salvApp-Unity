@@ -19,7 +19,7 @@ class LimbahBerandaPage extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 18),
         decoration: BoxDecoration(
             color: greenColor, borderRadius: BorderRadius.circular(8)),
-        height: 174,
+        height: 160,
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Expanded(
@@ -65,16 +65,7 @@ class LimbahBerandaPage extends StatelessWidget {
                               ))
                             ]),
                           )),
-                      Expanded(
-                          flex: 2,
-                          child: Container(
-                            child: Align(
-                                alignment: Alignment.topRight,
-                                child: Image.asset(
-                                  "assets/image/image_sampah.png",
-                                  fit: BoxFit.fill,
-                                )),
-                          )),
+                    
                     ]),
                   ),
                 ],

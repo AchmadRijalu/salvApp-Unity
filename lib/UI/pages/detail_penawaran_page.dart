@@ -88,7 +88,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                                 child: Center(
                                                   child:
                                                       CircularProgressIndicator(
-                                                          color: greenColor),
+                                                          color: whiteColor),
                                                 ));
                                           }
                                           if (state
@@ -275,7 +275,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                         lineHeight: 27,
                                         percent: 0.5,
                                         animation: true,
-                                        progressColor: Colors.yellow,
+                                        progressColor: greenColor,
                                         backgroundColor: greyColor,
                                         barRadius: Radius.circular(8),
                                       ),
@@ -340,7 +340,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                         lineHeight: 27,
                                         percent: 0.5,
                                         animation: true,
-                                        progressColor: Colors.yellow,
+                                        progressColor: greenColor,
                                         backgroundColor: greyColor,
                                         barRadius: Radius.circular(8),
                                       ),
@@ -434,7 +434,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             },
                                             child: Text(
                                               "Tolak",
-                                              style: whiteTextStyle.copyWith(
+                                              style: blackTextStyle.copyWith(
                                                   fontSize: 16,
                                                   fontWeight: semiBold),
                                             ),
@@ -471,7 +471,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               },
                                               child: Text(
                                                 "Terima",
-                                                style: whiteTextStyle.copyWith(
+                                                style: blackTextStyle.copyWith(
                                                     fontSize: 16,
                                                     fontWeight: semiBold),
                                               ),
@@ -709,7 +709,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 17, vertical: 16),
                                           decoration: BoxDecoration(
-                                              color: greenColor,
+                                              color: whiteColor,
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
@@ -720,13 +720,13 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Nama Iklan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   detailTransaksi.title
                                                       .toString(),
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -735,9 +735,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -748,13 +748,13 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Kategori",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   detailTransaksi.category
                                                       .toString(),
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -763,9 +763,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -776,14 +776,14 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Spesifikasi",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   detailTransaksi
                                                       .additionalInformation
                                                       .toString(),
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -808,7 +808,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 17, vertical: 16),
                                           decoration: BoxDecoration(
-                                              color: greenColor,
+                                              color: whiteColor,
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
@@ -819,12 +819,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Tanggal Kadaluarsa",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "-",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -833,9 +833,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -846,12 +846,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Berat Minimum",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.minimumWeight} g",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -860,9 +860,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -873,12 +873,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Berat Maksimum",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.minimumWeight} kg",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -887,9 +887,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -900,12 +900,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Pendapatan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "+ Rp${detailTransaksi.price},- / kg",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -930,7 +930,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 17, vertical: 16),
                                           decoration: BoxDecoration(
-                                              color: greenColor,
+                                              color: whiteColor,
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
@@ -941,12 +941,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Berat yang Diberikan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.weight} kg",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -955,9 +955,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -968,12 +968,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Lokasi",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.location}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -982,9 +982,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -995,12 +995,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Sistem",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.retrievalSystem}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1009,9 +1009,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1022,12 +1022,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Total Pendapatan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "+Rp. ${detailTransaksi.totalPrice}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1073,7 +1073,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 17, vertical: 16),
                                           decoration: BoxDecoration(
-                                              color: greenColor,
+                                              color: whiteColor,
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
@@ -1084,12 +1084,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Nama Iklan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.title}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1098,9 +1098,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1111,12 +1111,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Kategori",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.category}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1125,9 +1125,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1138,12 +1138,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Spesifikasi",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.additionalInformation}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1168,7 +1168,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 17, vertical: 16),
                                           decoration: BoxDecoration(
-                                              color: greenColor,
+                                              color: whiteColor,
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
@@ -1179,12 +1179,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Tanggal Kadaluarsa",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "-",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1193,9 +1193,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1206,12 +1206,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Berat Minimum",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.minimumWeight} g",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1220,9 +1220,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1233,12 +1233,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Berat Maksimum",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.minimumWeight} kg",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1247,9 +1247,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1260,12 +1260,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Pendapatan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "+ Rp${detailTransaksi.price},- / kg",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1290,7 +1290,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 17, vertical: 16),
                                           decoration: BoxDecoration(
-                                              color: greenColor,
+                                              color: whiteColor,
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
@@ -1301,12 +1301,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Berat yang Diberikan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.weight} kg",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1315,9 +1315,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1328,12 +1328,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Lokasi",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.location}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1342,9 +1342,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1355,12 +1355,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Sistem",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "${detailTransaksi.retrievalSystem}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1369,9 +1369,9 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                             const SizedBox(
                                               height: 12,
                                             ),
-                                            Divider(
-                                              color: whiteColor,
-                                            ),
+                                           Divider(
+                                            color: greyColor,
+                                           ),
                                             const SizedBox(
                                               height: 12,
                                             ),
@@ -1382,12 +1382,12 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               children: [
                                                 Text(
                                                   "Total Pendapatan",
-                                                  style: whiteTextStyle,
+                                                  style: blackTextStyle,
                                                 ),
                                                 Text(
                                                   "+Rp. ${detailTransaksi.totalPrice}",
                                                   style:
-                                                      whiteTextStyle.copyWith(
+                                                      blackTextStyle.copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )
@@ -1446,7 +1446,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                   },
                                   child: Text(
                                     "Batalkan Penawaran",
-                                    style: whiteTextStyle.copyWith(
+                                    style: blackTextStyle.copyWith(
                                         fontSize: 16, fontWeight: semiBold),
                                   ),
                                 ),
@@ -1474,7 +1474,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                 children: [
                                   Text(
                                     "Penawaran Telah Diterima Oleh Pembeli",
-                                    style: whiteTextStyle.copyWith(
+                                    style: blackTextStyle.copyWith(
                                         fontSize: 20, fontWeight: semiBold),
                                     textAlign: TextAlign.center,
                                   )
@@ -1500,7 +1500,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                 children: [
                                   Text(
                                     "Penawaran Telah Dibatalkan",
-                                    style: whiteTextStyle.copyWith(
+                                    style: blackTextStyle.copyWith(
                                         fontSize: 20, fontWeight: semiBold),
                                     textAlign: TextAlign.center,
                                   )
@@ -1517,7 +1517,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                                color: Colors.yellow.shade800,
+                                color: greenColor,
                                 borderRadius: BorderRadius.circular(12)),
                             width: double.infinity,
                             height: 100,
@@ -1534,7 +1534,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                         TextSpan(
                                             text:
                                                 " Segera Antar Penawaran Limbahmu!",
-                                            style: whiteTextStyle.copyWith(
+                                            style: blackTextStyle.copyWith(
                                                 fontSize: 20,
                                                 fontWeight: semiBold)),
                                       ],

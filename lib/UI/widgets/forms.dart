@@ -11,6 +11,7 @@ class CustomFormField extends StatelessWidget {
   final TextInputType? keyBoardType;
   final AutovalidateMode? autovalidateMode;
   final bool? isWeight;
+  
 
   const CustomFormField(
       {super.key,

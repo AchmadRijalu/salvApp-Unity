@@ -28,11 +28,18 @@ class _SigninPageState extends State<SigninPage> {
   final TextEditingController katasandiController =
       TextEditingController(text: '');
 
+  bool _obscureText = true;
   bool validate() {
     if (usernameController.text.isEmpty || katasandiController.text.isEmpty) {
       return false;
     }
     return true;
+  }
+
+  void initState() {
+    // TODO: implement initState
+    _obscureText = true;
+    super.initState();
   }
 
   @override
@@ -93,11 +100,40 @@ class _SigninPageState extends State<SigninPage> {
                         const SizedBox(
                           height: 17,
                         ),
-                        CustomFormField(
-                          title: "Kata Sandi",
-                          controller: katasandiController,
-                          obscureText: true,
-                        ),
+                        Container(child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Kata Sandi",
+                      style: blackTextStyle.copyWith(
+                          fontWeight: FontWeight.w600, fontSize: 14),
+                      textAlign: TextAlign.start,
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    //PASSWORD
+                    TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: katasandiController,
+                      obscureText: _obscureText,
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            icon: _obscureText
+                                ? Icon(Icons.visibility_off)
+                                : Icon(Icons.visibility),
+                            onPressed: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                          ),
+                          contentPadding: const EdgeInsets.all(12),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8))),
+                    ),
+                  ],
+                ),),
                         const SizedBox(
                           height: 10,
                         ),
@@ -117,11 +153,14 @@ class _SigninPageState extends State<SigninPage> {
                         CustomFilledButton(
                           title: "Sign In",
                           onPressed: () {
-                            if(validate()){
-                              context.read<AuthBloc>().add(AuthLogin(SigninFormModel(password: katasandiController.text, username: usernameController.text)));
-                            }
-                            else{
-                              showCustomSnacKbar(context, "Semua form harus diisi!");
+                            if (validate()) {
+                              context.read<AuthBloc>().add(AuthLogin(
+                                  SigninFormModel(
+                                      password: katasandiController.text,
+                                      username: usernameController.text)));
+                            } else {
+                              showCustomSnacKbar(
+                                  context, "Semua form harus diisi!");
                             }
                           },
                         ),
