@@ -7,7 +7,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class CameraPreviewPage extends StatelessWidget {
   final String picture;
-  CameraPreviewPage({super.key, required this.picture});
+  final String label;
+  CameraPreviewPage({super.key, required this.picture, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class CameraPreviewPage extends StatelessWidget {
           Image.network(picture, fit: BoxFit.cover, width: 250),
           // Image.file(File(picture!.path), fit: BoxFit.cover, width: 250),
           const SizedBox(height: 24),
+          Text(label)
           // Text(picture!.name)
         ]),
       ),

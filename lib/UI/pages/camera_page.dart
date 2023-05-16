@@ -64,15 +64,15 @@ class _CameraPageState extends State<CameraPage> {
             headers: {'Content-Type': 'application/json'},
             body: jsonEncode({"image": downloadURL}));
 
-        if (response.statusCode == 200) {
-          final data = jsonDecode(response.body);
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => CameraPreviewPage(
-                        picture: data['image'],
-                      )));
-        }
+        // if (response.statusCode == 200) {
+        //   final data = jsonDecode(response.body);
+        //   Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //           builder: (context) => CameraPreviewPage(
+        //                 picture: data['image'],
+        //               )));
+        // }
       } on FirebaseException catch (e) {
         print(e);
       }

@@ -83,7 +83,7 @@ class _IklanPageState extends State<IklanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: greenColor,
+        backgroundColor: blueColor,
         onPressed: () async {
           //Function with imagePicker to open and save photo.
           initializeFirebase();
@@ -94,6 +94,7 @@ class _IklanPageState extends State<IklanPage> {
           final pictureRef = storageRef.child(picture!.path);
           String dataUrl = 'data:image/png;base64,' +
               base64Encode(File(picture.path).readAsBytesSync());
+
           try {
             setState(() {
               isProcess = true;
@@ -119,8 +120,7 @@ class _IklanPageState extends State<IklanPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => CameraPreviewPage(
-                            picture: data['image'],
-                          )));
+                          picture: data['image'], label: data['label'][0])));
             }
           } on FirebaseException catch (e) {
             print(e);
@@ -252,19 +252,6 @@ class _IklanPageState extends State<IklanPage> {
                                 ),
                               ),
                             ] else if (userType == "buyer") ...[
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 37),
-                            child: Column(children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Lihat Iklan yang \nsedang berlangsung",
-                                    style: blackTextStyle.copyWith(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
-                              ),
                               BlocProvider(
                                 create: (context) =>
                                     IklanBloc()..add(IklanGetAllBuyer(userId)),
