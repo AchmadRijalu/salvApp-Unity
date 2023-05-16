@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class SignupFormModel {
   final String? name;
   final String? KecamatanId;
@@ -11,23 +13,26 @@ class SignupFormModel {
   final String? subdistrict;
   final String? postal_code;
   final String? address;
-  final String? image;
+  final dynamic image;
+  final dynamic longitude;
+  final dynamic latitude;
 
-  SignupFormModel({
-    this.KecamatanId,
-    this.name,
-    this.password,
-    this.username,
-    this.phone,
-    this.type,
-    this.province,
-    this.city,
-    this.ward,
-    this.subdistrict,
-    this.postal_code,
-    this.address,
-    this.image,
-  });
+  SignupFormModel(
+      {this.KecamatanId,
+      this.name,
+      this.password,
+      this.username,
+      this.phone,
+      this.type,
+      this.province,
+      this.city,
+      this.ward,
+      this.subdistrict,
+      this.postal_code,
+      this.address,
+      this.image,
+      this.latitude,
+      this.longitude});
 
   Map<String, dynamic> toJson() {
     return {
@@ -43,7 +48,9 @@ class SignupFormModel {
       'subdistrict': subdistrict,
       'postal_code': postal_code,
       'address': address,
-      'image': image
+      'image': image,
+      'latitude': latitude,
+      'longitude': longitude
     };
   }
 
@@ -54,6 +61,8 @@ class SignupFormModel {
           String? username,
           String? phone,
           String? type,
+          dynamic latitude,
+          dynamic longitude,
           String? province,
           String? city,
           String? ward,
@@ -74,5 +83,7 @@ class SignupFormModel {
           subdistrict: subdistrict ?? this.subdistrict,
           postal_code: postal_code ?? this.postal_code,
           address: address ?? this.address,
+          latitude: latitude ?? this.latitude,
+          longitude: longitude ?? this.longitude,
           image: image ?? this.image);
 }

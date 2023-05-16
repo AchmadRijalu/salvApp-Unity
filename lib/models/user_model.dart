@@ -3,6 +3,7 @@
 //     final user = userFromJson(jsonString);
 
 import 'dart:convert';
+import 'dart:ffi';
 
 User userFromJson(String str) => User.fromJson(json.decode(str));
 
@@ -48,12 +49,14 @@ class Userdata {
      this.type,
      this.username,
      this.ward,
+     this.latitude,
+     this.longitude
   });
 
   final String? address;
   final String? city;
   final String? id;
-  final dynamic? image;
+  final dynamic image;
   final String? name;
   final String? password;
   final String? phoneNumber;
@@ -64,6 +67,8 @@ class Userdata {
   final String? type;
   final String? username;
   final String? ward;
+  final dynamic longitude;
+  final dynamic latitude;
 
   factory Userdata.fromJson(Map<String, dynamic> json) => Userdata(
         address: json["address"],
@@ -80,6 +85,8 @@ class Userdata {
         type: json["type"],
         username: json["username"],
         ward: json["ward"],
+        latitude: json["latitude"],
+        longitude: json["longitude"]
       );
 
   Map<String, dynamic> toJson() {
@@ -98,6 +105,8 @@ class Userdata {
     data['type'] = type;
     data['username'] = name;
     data['ward'] = ward;
+    data['latitude'] = latitude;
+    data['longitude'] = longitude;
 
     return data;
   }
