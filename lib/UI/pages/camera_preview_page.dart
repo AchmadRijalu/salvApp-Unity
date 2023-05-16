@@ -5,21 +5,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../widgets/buttons.dart';
+
 class CameraPreviewPage extends StatelessWidget {
   final String picture;
-  final String label;
+  final dynamic label;
   CameraPreviewPage({super.key, required this.picture, required this.label});
 
   @override
   Widget build(BuildContext context) {
+    String combinedLabel = "";
+    label.forEach((fruit) {
+      combinedLabel += "${" " + fruit},";
+    });
+
     return Scaffold(
       body: Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Image.network(picture, fit: BoxFit.cover, width: 250),
-          // Image.file(File(picture!.path), fit: BoxFit.cover, width: 250),
           const SizedBox(height: 24),
-          Text(label)
-          // Text(picture!.name)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Text(
+              "Kami menemukan$combinedLabel berikut adalah rekomendasi iklan terkait.",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 54,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: CustomFilledButton(
+              title: "Lihat Rekomendasi",
+              onPressed: () {},
+            ),
+          ),
         ]),
       ),
     );

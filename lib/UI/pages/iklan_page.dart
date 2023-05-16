@@ -120,7 +120,7 @@ class _IklanPageState extends State<IklanPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => CameraPreviewPage(
-                          picture: data['image'], label: data['label'][0])));
+                          picture: data['image'], label: data['label'])));
             }
           } on FirebaseException catch (e) {
             print(e);
