@@ -16,6 +16,7 @@ import 'package:salv/UI/pages/tambah_iklan_limbah1_page.dart';
 import 'package:salv/UI/pages/tambah_iklan_limbah2_page.dart';
 import 'package:salv/UI/widgets/buttons.dart';
 import 'package:salv/UI/widgets/list_iklan_widget.dart';
+import 'package:salv/UI/widgets/uiloading.dart';
 import 'package:salv/blocs/iklan/iklan_bloc.dart';
 import 'package:salv/models/iklan_form_model.dart';
 import 'package:salv/models/user_model.dart';
@@ -46,6 +47,7 @@ class _IklanPageState extends State<IklanPage> {
   dynamic getAdvertisementId;
   late IklanBloc _iklanBloc;
   bool isRefresh = false;
+  bool isProcess = false;
 
   @override
   void initState() {
@@ -93,6 +95,10 @@ class _IklanPageState extends State<IklanPage> {
           String dataUrl = 'data:image/png;base64,' +
               base64Encode(File(picture.path).readAsBytesSync());
           try {
+            setState(() {
+              isProcess = true;
+            });
+
             await pictureRef.putString(dataUrl,
                 format: PutStringFormat.dataUrl);
             String downloadUrl = await pictureRef.getDownloadURL();
@@ -105,6 +111,9 @@ class _IklanPageState extends State<IklanPage> {
                     body: jsonEncode({"image": downloadUrl}));
 
             if (response.statusCode == 200) {
+              setState(() {
+                isProcess = false;
+              });
               final data = jsonDecode(response.body);
               Navigator.push(
                   context,
@@ -127,208 +136,122 @@ class _IklanPageState extends State<IklanPage> {
         },
         child: const Icon(Icons.camera_alt),
       ),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          setState(() {
-            isRefresh = true;
-          });
-          _iklanBloc.add(IklanGetAll());
-          await Future.delayed(const Duration(milliseconds: 100))
-              .timeout(const Duration(seconds: 3));
-          setState(() {
-            isRefresh = false;
-          });
-        },
-        child: Padding(
-            padding: const EdgeInsets.all(0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const SizedBox(
-                  height: 44,
-                ),
-                Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 37),
-                    child: Row(
-                        children: [Image.asset('assets/image/logo-png.png')])),
-                const SizedBox(
-                  height: 12,
-                ),
-                Expanded(
-                    child: SingleChildScrollView(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (userType == "buyer") ...[
-                          buildTambahIklan(context, usernameIklanA),
-                        ],
-                        // Text(userList.length.toString()),
-                        if (userType == "seller") ...[
-                          Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 37),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: InkWell(
-                                          onTap: () {}, // Handle your onTap
-                                          child: Ink(
-                                            child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      Icon(
-                                                        Icons.location_on,
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 2,
-                                                      ),
-                                                      Text(
-                                                        "Komplek Pusvetma, Jl Ayani",
-                                                        style: blackTextStyle
-                                                            .copyWith(
-                                                                fontWeight:
-                                                                    medium),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 2,
-                                                      ),
-                                                      Icon(
-                                                        Icons.arrow_drop_down,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ]),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 12,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Lihat Iklan yang \nsedang berlangsung",
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w700),
-                                      )
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Expanded(
-                                          flex: 4,
-                                          child: CupertinoTextField(
-                                            // controller: controller,
-                                            prefix: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: Icon(
-                                                Icons.search,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                            prefixMode:
-                                                OverlayVisibilityMode.always,
-                                            padding: const EdgeInsets.all(10),
-                                            placeholder: "Cari Iklan",
-
-                                            placeholderStyle:
-                                                TextStyle(color: Colors.black),
-                                            onChanged: (value) {},
-                                            // ((value) => SearchList(value))
-                                          )),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 12,
-                                  )
-                                ],
-                              ))
-                        ],
-
-                        if (userType == "seller") ...[
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 37),
-                            child: BlocProvider(
-                              create: (context) => _iklanBloc,
-                              child: BlocBuilder<IklanBloc, IklanState>(
-                                builder: (context, state) {
-                                  if (state is IklanLoading && !isRefresh ||
-                                      isRefresh) {
-                                    return Container(
-                                        margin: const EdgeInsets.only(top: 40),
-                                        child: Center(
-                                          child: CircularProgressIndicator(
-                                              color: greenColor),
-                                        ));
-                                  }
-                                  if (state is IklanGetSuccess) {
-                                    return ListView.builder(
-                                      shrinkWrap: true,
-                                      itemCount: state.iklanSeller!.data.length,
-                                      physics: NeverScrollableScrollPhysics(),
-                                      itemBuilder: (context, index) {
-                                        var iklan =
-                                            state.iklanSeller!.data[index];
-                                        getAdvertisementId = iklan.id;
-                                        return ListIklan(
-                                          progressBarIndicator:
-                                              iklan.ongoingWeight /
-                                                  iklan.requestedWeight,
-                                          title: iklan.title,
-                                          price: iklan.price,
-                                          onGoingWeight: iklan.ongoingWeight,
-                                          requestedWeight:
-                                              iklan.requestedWeight,
-                                          onTap: () {
-                                            Navigator.push(context,
-                                                MaterialPageRoute(
-                                              builder: (context) {
-                                                return DetailIklanPage(
-                                                  maxProgress:
-                                                      iklan.requestedWeight,
-                                                  advertisementId: iklan.id,
-                                                  iklanProgress: (iklan
-                                                          .ongoingWeight /
-                                                      iklan.requestedWeight),
-                                                );
-                                              },
-                                            ));
-                                          },
-                                        );
-                                      },
-                                    );
-                                  }
-                                  if (state is IklanFailed) {
-                                    return Center(
-                                      child: Text(
-                                        "Terjadi Kesalahan :(",
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 16, fontWeight: semiBold),
-                                      ),
-                                    );
-                                  }
-                                  return Container();
-                                },
-                              ),
+      body: Stack(
+        children: [
+          RefreshIndicator(
+            onRefresh: () async {
+              setState(() {
+                isRefresh = true;
+              });
+              _iklanBloc.add(IklanGetAll());
+              await Future.delayed(const Duration(milliseconds: 100))
+                  .timeout(const Duration(seconds: 3));
+              setState(() {
+                isRefresh = false;
+              });
+            },
+            child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 37),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const SizedBox(
+                      height: 44,
+                    ),
+                    Row(children: [Image.asset('assets/image/logo-png.png')]),
+                    const SizedBox(
+                      height: 17,
+                    ),
+                    Expanded(
+                        child: SingleChildScrollView(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (userType == "buyer") ...[
+                              buildTambahIklan(context, usernameIklanA),
+                            ],
+                            // Text(userList.length.toString()),
+                            Row(
+                              children: [
+                                Text(
+                                  "Lihat Iklan yang \nsedang berlangsung",
+                                  style: blackTextStyle.copyWith(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
                             ),
-                          ),
-                        ] else if (userType == "buyer") ...[
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            if (userType == "seller") ...[
+                              BlocProvider(
+                                create: (context) => _iklanBloc,
+                                child: BlocBuilder<IklanBloc, IklanState>(
+                                  builder: (context, state) {
+                                    if (state is IklanLoading && !isRefresh ||
+                                        isRefresh) {
+                                      return Container(
+                                          margin:
+                                              const EdgeInsets.only(top: 40),
+                                          child: Center(
+                                            child: CircularProgressIndicator(
+                                                color: greenColor),
+                                          ));
+                                    }
+                                    if (state is IklanGetSuccess) {
+                                      return ListView.builder(
+                                        shrinkWrap: true,
+                                        itemCount:
+                                            state.iklanSeller!.data.length,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemBuilder: (context, index) {
+                                          var iklan =
+                                              state.iklanSeller!.data[index];
+                                          getAdvertisementId = iklan.id;
+                                          return ListIklan(
+                                            progressBarIndicator:
+                                                iklan.ongoingWeight /
+                                                    iklan.requestedWeight,
+                                            title: iklan.title,
+                                            price: iklan.price,
+                                            onGoingWeight: iklan.ongoingWeight,
+                                            requestedWeight:
+                                                iklan.requestedWeight,
+                                            onTap: () {
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(
+                                                builder: (context) {
+                                                  return DetailIklanPage(
+                                                    maxProgress:
+                                                        iklan.requestedWeight,
+                                                    advertisementId: iklan.id,
+                                                    iklanProgress: (iklan
+                                                            .ongoingWeight /
+                                                        iklan.requestedWeight),
+                                                  );
+                                                },
+                                              ));
+                                            },
+                                          );
+                                        },
+                                      );
+                                    }
+                                    if (state is IklanFailed) {
+                                      return Center(
+                                        child: Text(
+                                          "Terjadi Kesalahan :(",
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 16,
+                                              fontWeight: semiBold),
+                                        ),
+                                      );
+                                    }
+                                    return Container();
+                                  },
+                                ),
+                              ),
+                            ] else if (userType == "buyer") ...[
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 37),
                             child: Column(children: [
@@ -417,13 +340,14 @@ class _IklanPageState extends State<IklanPage> {
                                   },
                                 ),
                               )
-                            ]),
-                          )
-                        ],
-                      ]),
-                ))
-              ],
-            )),
+                            ],
+                          ]),
+                    ))
+                  ],
+                )),
+          ),
+          isProcess == true ? UiLoading.loadingBlock() : Container()
+        ],
       ),
     );
   }
