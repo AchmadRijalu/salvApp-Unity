@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -45,6 +47,9 @@ class ProfilPage extends StatelessWidget {
             }
 
             if (state is AuthSuccess) {
+              Uint8List bytes = base64.decode(state.user!.image);
+              
+              print(state.user!.image);
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Container(
@@ -72,15 +77,7 @@ class ProfilPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 22),
                       child: Column(children: [
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/image/image_profilepng.png"))),
-                        ),
+                      //  Image.memory(base64.decode(state.user!.image.split(',').last)),
                         SizedBox(
                           height: 16,
                         ),

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -64,11 +65,25 @@ class _IklanPageState extends State<IklanPage> {
     }
   }
 
+  // void filterListIklan(String enteredTitle) {
+  //   List results = [];
+  //   _iklanBloc.emit(IklanGetSuccess());
+  //   if (enteredTitle.isEmpty) {
+  //     // if the search field is empty or only contains white-space, we'll display all users
+  //     results = state.iklanSeller!.data;
+  //   } else {
+  //     results = state.iklanSeller!.data
+  //         .where((iklan) => iklan.title.contains(enteredTitle.toLowerCase()))
+  //         .toList();
+  //     // we use the toLowerCase() method to make it case-insensitive
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: blueColor,
+        backgroundColor: greenColor,
         onPressed: () async {
           //Function with imagePicker to open and save photo.
           initializeFirebase();
@@ -79,7 +94,6 @@ class _IklanPageState extends State<IklanPage> {
           final pictureRef = storageRef.child(picture!.path);
           String dataUrl = 'data:image/png;base64,' +
               base64Encode(File(picture.path).readAsBytesSync());
-
           try {
             setState(() {
               isProcess = true;
@@ -238,6 +252,19 @@ class _IklanPageState extends State<IklanPage> {
                                 ),
                               ),
                             ] else if (userType == "buyer") ...[
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 37),
+                            child: Column(children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Lihat Iklan yang \nsedang berlangsung",
+                                    style: blackTextStyle.copyWith(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700),
+                                  )
+                                ],
+                              ),
                               BlocProvider(
                                 create: (context) =>
                                     IklanBloc()..add(IklanGetAllBuyer(userId)),
@@ -328,6 +355,7 @@ class _IklanPageState extends State<IklanPage> {
 
 Widget buildTambahIklan(BuildContext context, String? usernameIklan) {
   return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 37),
     width: double.infinity,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

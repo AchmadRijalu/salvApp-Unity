@@ -22,18 +22,20 @@ class ListEdukasi extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        decoration: BoxDecoration(
+            color: whiteColor,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                blurRadius: 2.0,
+                offset: Offset(0, 2), // changes the position of the shadow
+              ),
+            ],
+            borderRadius: BorderRadius.circular(8)),
         width: double.infinity,
         height: 88,
-        margin: const EdgeInsets.only(bottom: 12),
+        margin: const EdgeInsets.only(bottom: 20),
         child: Row(children: [
-          Expanded(
-              child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                    image: AssetImage(gambarLimbah!), fit: BoxFit.fill)),
-          )),
-
 // DecorationImage(
           //           image: gambarLimbah == "" ? AssetImage(gambarLimbah!) : NetworkImage(gambarLimbah!) as ImageProvider, fit: BoxFit.fill)
 
@@ -43,6 +45,25 @@ class ListEdukasi extends StatelessWidget {
               child: Column(children: [
                 Expanded(
                     child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            namaTutorial!,
+                            style: blueTextStyle.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.w700),
+                            overflow: TextOverflow.fade,
+                            textAlign: TextAlign.start,
+                          ),
+                        )
+                      ]),
+                )),
+                Expanded(
+                    child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,32 +71,15 @@ class ListEdukasi extends StatelessWidget {
                         Text(
                           tipeLimbah!,
                           style: greenTextStyle.copyWith(
-                              fontSize: 8, fontWeight: FontWeight.w700),
+                              fontSize: 12, fontWeight: FontWeight.w700),
                         ),
                         Text(
                           "${durasiVideo!.toString()} menit ",
                           style: greyTextStyle.copyWith(
-                              fontSize: 8, fontWeight: FontWeight.w400),
+                              fontSize: 12, fontWeight: FontWeight.w400),
                         )
                       ]),
                 )),
-                Expanded(
-                    flex: 2,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Flexible(
-                              child: Text(
-                                namaTutorial!,
-                                style: blueTextStyle.copyWith(
-                                    fontSize: 12, fontWeight: FontWeight.w700),
-                                overflow: TextOverflow.fade,
-                              ),
-                            )
-                          ]),
-                    ))
               ]),
             ),
           )

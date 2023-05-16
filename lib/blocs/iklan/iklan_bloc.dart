@@ -25,6 +25,7 @@ class IklanBloc extends Bloc<IklanEvent, IklanState> {
 
           final iklan = await IklanService().getIklanSeller();
 
+          print(iklan.data);
           emit(IklanGetSuccess(iklan));
         } catch (e) {
           print(e.toString());

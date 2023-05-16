@@ -27,10 +27,18 @@ class ListPenawaran extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+
         width: double.infinity,
         height: 82,
-        margin: const EdgeInsets.only(bottom: 14),
+        margin: const EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                blurRadius: 2.0,
+                offset: Offset(0, 2), // changes the position of the shadow
+              ),
+            ],
             color: statusPenawaran == 'Respon' ||
                     statusPenawaran == "Sedang Berlangsung" ||
                     statusPenawaran == "Menunggu Konfirmasi"
@@ -38,31 +46,35 @@ class ListPenawaran extends StatelessWidget {
                 : whiteColor,
             borderRadius: BorderRadius.circular(8)),
         child: Row(children: [
+          // Expanded(
+          //     child: Container(
+          //   padding: const EdgeInsets.all(12),
+          //   child: ClipRRect(
+          //     borderRadius: BorderRadius.circular(8),
+          //     child: Image.asset(
+          //       gambar!,
+          //       fit: BoxFit.fill,
+          //     ),
+          //   ),
+          // )),
           Expanded(
-              child: Container(
-            padding: const EdgeInsets.all(12),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                gambar!,
-                fit: BoxFit.fill,
-              ),
-            ),
-          )),
-          Expanded(
-              flex: 3,
+             
               child: Container(
                 height: double.infinity,
                 padding: const EdgeInsets.all(6),
                 child: Row(children: [
                   Expanded(
+                    flex: 2,
                       child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
                             flex: 3,
-                            child: Text(namaLimbah!,
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              width: double.infinity,
+                               child: Text(namaLimbah!,
                                 overflow: TextOverflow.clip,
                                 style: statusPenawaran == 'Respon' ||
                                         statusPenawaran ==
@@ -71,7 +83,7 @@ class ListPenawaran extends StatelessWidget {
                                     ? whiteTextStyle.copyWith(
                                         fontWeight: FontWeight.w700)
                                     : greenTextStyle.copyWith(
-                                        fontWeight: FontWeight.w700))),
+                                        fontWeight: FontWeight.w700)),)),
                         Flexible(
                             child: Container(
                           width: double.infinity,
@@ -79,6 +91,7 @@ class ListPenawaran extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                
                                 Text(
                                   username!,
                                   style: statusPenawaran == 'Respon' ||
@@ -86,8 +99,8 @@ class ListPenawaran extends StatelessWidget {
                                               "Sedang Berlangsung" ||
                                           statusPenawaran ==
                                               "Menunggu Konfirmasi"
-                                      ? whiteTextStyle.copyWith(fontSize: 10)
-                                      : greenTextStyle.copyWith(fontSize: 10),
+                                      ? whiteTextStyle.copyWith(fontSize: 12)
+                                      : greenTextStyle.copyWith(fontSize: 12),
                                 )
                               ]),
                         ))
@@ -144,9 +157,11 @@ class ListPenawaran extends StatelessWidget {
                       Expanded(
                           child: Container(
                               width: double.infinity,
-                              height: 23,
+                              
                               decoration: BoxDecoration(
-                                  color: statusPenawaran == "Konfirmasi"? greenColor: whiteColor,
+                                  color: statusPenawaran == "Konfirmasi"
+                                      ? greenColor
+                                      : whiteColor,
                                   borderRadius: BorderRadius.circular(8)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,

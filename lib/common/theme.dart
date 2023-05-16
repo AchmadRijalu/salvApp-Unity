@@ -1,6 +1,7 @@
 part of 'common.dart';
 
 Color greenColor = const Color(0XFF1E6F5C);
+Color whiteItem = const Color(0xffF6F8FB);
 Color blueColor = const Color(0XFF1E456F);
 Color whiteColor = const Color(0xffFFFFFF);
 Color blackColor = const Color(0xff14193F);
