@@ -42,7 +42,6 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
     if (authState is AuthSuccess) {
       userType = authState.user!.type;
       userId = authState.user!.id;
-      print(" ADS ID:${widget.advertisementId}");
     }
   }
 
@@ -633,7 +632,6 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                             ],
                                           ),
                                         )),
-                                        
                                         const SizedBox(height: 20),
                                         CustomFilledButton(
                                           width: 200,
@@ -653,7 +651,6 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                       ],
                                     ),
                                   )),
- 
 
                                   // if pabrik
                                   Expanded(

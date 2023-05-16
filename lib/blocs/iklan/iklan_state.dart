@@ -17,6 +17,13 @@ class IklanGetSuccess extends IklanState {
   List<Object> get props => [iklanSeller!];
 }
 
+class IklanRecommendationGetSuccess extends IklanState {
+  final IklanSeller? iklanSeller;
+
+  const IklanRecommendationGetSuccess(this.iklanSeller);
+  List<Object> get props => [iklanSeller!];
+}
+
 class IklanSellerGetDetailSuccess extends IklanState {
   final IklanSellerDetail? iklanSellerDetail;
 

@@ -32,6 +32,22 @@ class IklanService {
     }
   }
 
+  Future<IklanSeller> getIklanRecommendation(dynamic categories) async {
+    try {
+      final response = await http.get(
+        Uri.parse("${baseUrlSalv}content-based/${categories}"),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': await AuthService().getToken(),
+        },
+      );
+
+      return IklanSeller.fromJson(json.decode(response.body));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<IklanSellerDetail> getIklanSellerDetail(dynamic id) async {
     try {
       final response = await http.get(
@@ -105,9 +121,7 @@ class IklanService {
     }
   }
 
-
-  Future<BatalIklanBuyer> batalIklanBuyer(
-      dynamic transactionId) async {
+  Future<BatalIklanBuyer> batalIklanBuyer(dynamic transactionId) async {
     try {
       final response = await http.get(
         Uri.parse("${baseUrlSalv}buyer-advertisement/cancel/${transactionId}"),

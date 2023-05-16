@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:salv/UI/pages/beranda_detail.dart';
 import 'package:salv/UI/pages/beranda_page.dart';
 import 'package:salv/UI/pages/camera_page.dart';
+import 'package:salv/UI/pages/camera_preview_page.dart';
 import 'package:salv/UI/pages/detail_edukasi_page.dart';
 import 'package:salv/UI/pages/detail_iklan_pabrik_page.dart';
 import 'package:salv/UI/pages/detail_iklan_page.dart';
@@ -105,6 +106,8 @@ class MyApp extends StatelessWidget {
               ),
           TopupPointPage.routeName: (context) => TopupPointPage(),
           DetailIklanPabrikPage.routeName: (context) => DetailIklanPabrikPage(),
+          CameraPreviewPage.routeName: (context) =>
+              CameraPreviewPage(picture: '', label: '')
         },
       ),
     );

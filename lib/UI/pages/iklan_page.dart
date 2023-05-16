@@ -82,60 +82,54 @@ class _IklanPageState extends State<IklanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: blueColor,
-        onPressed: () async {
-          //Function with imagePicker to open and save photo.
-          initializeFirebase();
-          ImagePicker imagePicker = ImagePicker();
-          XFile? picture =
-              await imagePicker.pickImage(source: ImageSource.camera);
-          final storageRef = FirebaseStorage.instance.ref();
-          final pictureRef = storageRef.child(picture!.path);
-          String dataUrl = 'data:image/png;base64,' +
-              base64Encode(File(picture.path).readAsBytesSync());
+      floatingActionButton: userType == "buyer"
+          ? Container()
+          : FloatingActionButton(
+              backgroundColor: blueColor,
+              onPressed: () async {
+                //Function with imagePicker to open and save photo.
+                initializeFirebase();
+                ImagePicker imagePicker = ImagePicker();
+                XFile? picture =
+                    await imagePicker.pickImage(source: ImageSource.camera);
+                final storageRef = FirebaseStorage.instance.ref();
+                final pictureRef = storageRef.child(picture!.path);
+                String dataUrl = 'data:image/png;base64,' +
+                    base64Encode(File(picture.path).readAsBytesSync());
 
-          try {
-            setState(() {
-              isProcess = true;
-            });
+                try {
+                  setState(() {
+                    isProcess = true;
+                  });
 
-            await pictureRef.putString(dataUrl,
-                format: PutStringFormat.dataUrl);
-            String downloadUrl = await pictureRef.getDownloadURL();
-            final response =
-                await http.post(Uri.parse("https://salv.cloud/image/upload"),
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': await AuthService().getToken(),
-                    },
-                    body: jsonEncode({"image": downloadUrl}));
+                  await pictureRef.putString(dataUrl,
+                      format: PutStringFormat.dataUrl);
+                  String downloadUrl = await pictureRef.getDownloadURL();
+                  final response = await http.post(
+                      Uri.parse("https://salv.cloud/image/upload"),
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': await AuthService().getToken(),
+                      },
+                      body: jsonEncode({"image": downloadUrl}));
 
-            if (response.statusCode == 200) {
-              setState(() {
-                isProcess = false;
-              });
-              final data = jsonDecode(response.body);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CameraPreviewPage(
-                          picture: data['image'], label: data['label'])));
-            }
-          } on FirebaseException catch (e) {
-            print(e);
-          }
-
-          // await availableCameras().then((value) => Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: (_) => CameraPage(
-          //         cameras: value,
-          //       ),
-          //     )));
-        },
-        child: const Icon(Icons.camera_alt),
-      ),
+                  if (response.statusCode == 200) {
+                    setState(() {
+                      isProcess = false;
+                    });
+                    final data = jsonDecode(response.body);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return CameraPreviewPage(
+                          picture: data['image'], label: data['label']);
+                    }));
+                  }
+                } on FirebaseException catch (e) {
+                  print(e);
+                }
+              },
+              child: const Icon(Icons.camera_alt),
+            ),
       body: Stack(
         children: [
           RefreshIndicator(

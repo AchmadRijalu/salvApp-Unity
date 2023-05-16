@@ -25,13 +25,25 @@ class IklanBloc extends Bloc<IklanEvent, IklanState> {
 
           final iklan = await IklanService().getIklanSeller();
 
-          print(iklan.data);
           emit(IklanGetSuccess(iklan));
         } catch (e) {
-          print(e.toString());
           emit(IklanFailed(e.toString()));
         }
       }
+
+      if (event is IklanRecommendationGetAll) {
+        try {
+          emit(IklanLoading());
+
+          final rekomendasiIklan =
+              await IklanService().getIklanRecommendation(event.categories!);
+
+          emit(IklanRecommendationGetSuccess(rekomendasiIklan));
+        } catch (e) {
+          emit(IklanFailed(e.toString()));
+        }
+      }
+
       if (event is IklanAddAds) {
         try {
           emit(IklanLoading());
@@ -59,19 +71,18 @@ class IklanBloc extends Bloc<IklanEvent, IklanState> {
           emit(IklanLoading());
           final getIklan =
               await IklanService().getIklanBuyerDetail(event.adsId);
-          print(getIklan.data.id);
           emit(IklanBuyerGetDetailSuccess(getIklan));
         } catch (e) {
           emit(IklanFailed(e.toString()));
         }
       }
+
       if (event is IklanGetDetailSeller) {
         try {
           emit(IklanLoading());
 
           final getIklan =
               await IklanService().getIklanSellerDetail(event.adsId);
-          print(getIklan.data.id);
           emit(IklanSellerGetDetailSuccess(getIklan));
         } catch (e) {
           rethrow;
@@ -83,7 +94,6 @@ class IklanBloc extends Bloc<IklanEvent, IklanState> {
           emit(IklanLoading());
 
           final cancelIklan = await IklanService().batalIklanBuyer(event.adsId);
-          print(cancelIklan.message);
           emit(IklanCancelBuyerSuccess(cancelIklan));
         } catch (e) {
           emit(IklanFailed(e.toString()));

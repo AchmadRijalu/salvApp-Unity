@@ -10,6 +10,13 @@ abstract class IklanEvent extends Equatable {
 //SELLER SIDE
 class IklanGetAll extends IklanEvent {}
 
+class IklanRecommendationGetAll extends IklanEvent {
+  late dynamic? categories;
+
+  IklanRecommendationGetAll(this.categories);
+  List<Object> get props => [categories!];
+}
+
 class IklanGetDetailSeller extends IklanEvent {
   late String? adsId;
 
@@ -42,7 +49,7 @@ class IklanAddAds extends IklanEvent {
   List<Object> get props => [data!];
 }
 
-class IklanCancelBuyer extends IklanEvent{
+class IklanCancelBuyer extends IklanEvent {
   late String? adsId;
 
   IklanCancelBuyer(this.adsId);
