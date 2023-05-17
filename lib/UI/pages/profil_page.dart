@@ -48,8 +48,7 @@ class ProfilPage extends StatelessWidget {
 
             if (state is AuthSuccess) {
               Uint8List bytes = base64.decode(state.user!.image);
-              
-              print(state.user!.image);
+
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Container(
@@ -77,17 +76,23 @@ class ProfilPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 22),
                       child: Column(children: [
-                      //  Image.memory(base64.decode(state.user!.image.split(',').last)),
+                        //  Image.memory(base64.decode(state.user!.image.split(',').last)),
                         SizedBox(
                           height: 16,
                         ),
-                        Text(
-                          state.user!.username!,
-                          style: blackTextStyle.copyWith(
-                              fontSize: 18, fontWeight: medium),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Halo, ${state.user!.username!}",
+                              style: blackTextStyle.copyWith(
+                                  fontSize: 20, fontWeight: bold),
+                            ),
+                            
+                          ],
                         ),
                         const SizedBox(
-                          height: 8,
+                          height: 12,
                         ),
                         GestureDetector(
                           onTap: () {
