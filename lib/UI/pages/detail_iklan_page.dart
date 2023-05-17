@@ -104,21 +104,26 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                   Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
-                                                            .spaceBetween,
+                                                            .center,
                                                     children: [
-                                                      Text(
-                                                        "Nama Iklan",
-                                                        style: blackTextStyle,
-                                                      ),
-                                                      Text(
-                                                        state.iklanBuyerDetail!
-                                                            .data.title,
-                                                        style: blackTextStyle
-                                                            .copyWith(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                      )
+                                                      Flexible(
+                                                          child: Wrap(
+                                                        children: [
+                                                          Text(
+                                                            state
+                                                                .iklanBuyerDetail!
+                                                                .data
+                                                                .title,
+                                                                textAlign: TextAlign.center,
+                                                            style: blackTextStyle
+                                                                .copyWith(
+                                                                  fontSize: 16,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600),
+                                                          )
+                                                        ],
+                                                      ))
                                                     ],
                                                   ),
                                                   const SizedBox(
@@ -675,21 +680,26 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                   Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
-                                                            .spaceBetween,
+                                                            .center,
                                                     children: [
-                                                      Text(
-                                                        "Nama Iklan",
-                                                        style: blackTextStyle,
-                                                      ),
-                                                      Text(
-                                                        state.iklanSellerDetail!
-                                                            .data.title,
-                                                        style: blackTextStyle
-                                                            .copyWith(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                      )
+                                                      Flexible(
+                                                          child:
+                                                              Wrap(children: [
+                                                        Text(
+                                                          state
+                                                              .iklanSellerDetail!
+                                                              .data
+                                                              .title,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: blackTextStyle
+                                                              .copyWith(
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600),
+                                                        )
+                                                      ]))
                                                     ],
                                                   ),
                                                   const SizedBox(

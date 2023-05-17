@@ -45,17 +45,19 @@
  <false/>
  <key>CADisableMinimumFrameDurationOnPhone</key>
  <true/>
+ <key>NSLocationAlwaysUsageDescription</key>
+    <string>Your location is required for accurate notifactions  benefits for you , also you cane disable it with no problem </string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your location is required for accurate notifaction benefits for you  lso you cane disable it with no problem </string>
+    
  <key>NSPhotoLibraryUsageDescription</key>
   <string>Upload images for screen background</string>
   <key>NSCameraUsageDescription</key>
-  <key>NSLocationWhenInUseUsageDescription</key>
-<string>This app needs access to location when open.</string>
-<key>NSLocationAlwaysUsageDescription</key>
-<string>This app needs access to location when in the background.</string>
   <string>Upload image from camera for screen background</string>
   <key>NSMicrophoneUsageDescription</key>
   <string>Post videos to profile</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
+  
 	<true/>
 </dict>
 </plist>
