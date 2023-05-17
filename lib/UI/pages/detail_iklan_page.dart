@@ -46,6 +46,7 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
     }
   }
 
+
 void _launchMapsUrl(double lat, double lon) async {
   final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lon';
   if (await canLaunchUrlString(url)) {
@@ -54,6 +55,8 @@ void _launchMapsUrl(double lat, double lon) async {
     throw 'Could not launch $url';
   }
 }
+
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Detail Iklan")),
@@ -558,6 +561,7 @@ void _launchMapsUrl(double lat, double lon) async {
                   },
                   builder: (context, state) {
                     if (state is IklanSellerGetDetailSuccess) {
+                      
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 36, vertical: 14),

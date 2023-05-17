@@ -19,63 +19,56 @@ class LimbahBerandaPage extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 18),
         decoration: BoxDecoration(
             color: greenColor, borderRadius: BorderRadius.circular(8)),
-        height: 160,
+        height: 130,
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Expanded(
-              flex: 3,
               child: Container(
                   child: Column(
-                children: [
+            children: [
+              Expanded(
+                child: Row(children: [
                   Expanded(
-                    child: Row(children: [
+                      child: Container(
+                    child: Column(children: [
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Column(children: [
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                    padding: const EdgeInsets.only(
-                                        left: 21, top: 23),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            title!,
-                                            overflow: TextOverflow.clip,
-                                            style: whiteTextStyle.copyWith(
-                                                fontSize: 20),
-                                          ),
-                                        )
-                                      ],
-                                    )),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Expanded(
-                                  child: Container(
-                                padding: const EdgeInsets.only(left: 21),
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: []),
-                              ))
-                            ]),
-                          )),
-                    
+                        flex: 2,
+                        child: Container(
+                            padding: const EdgeInsets.only(left: 21, top: 23),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    title!,
+                                    overflow: TextOverflow.clip,
+                                    style:
+                                        whiteTextStyle.copyWith(fontSize: 22, fontWeight: medium),
+                                  ),
+                                )
+                                
+                              ],
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
                     ]),
-                  ),
-                ],
-              ))),
-          const SizedBox(
-            height: 5,
-          ),
-          Expanded(
-              flex: 2,
-              child: Container(
+                  )),
+                  // Expanded(
+                  //     flex: 2,
+                  //     child: Container(
+                  //       child: Align(
+                  //           alignment: Alignment.topRight,
+                  //           child: Image.asset(
+                  //             "assets/image/image_sampah.png",
+                  //             fit: BoxFit.fill,
+                  //           )),
+                  //     )),
+                ]),
+              ),
+              Flexible(
+                  child: Container(
                 child: Column(children: [
                   Expanded(
                       child: Container(
@@ -117,12 +110,16 @@ class LimbahBerandaPage extends StatelessWidget {
                             ],
                           ),
                         )),
-                        
                       ],
                     ),
                   ))
                 ]),
               ))
+            ],
+          ))),
+          const SizedBox(
+            height: 5,
+          ),
         ]),
       ),
     );
