@@ -8,6 +8,7 @@ import 'package:salv/UI/pages/form_jual_limbah_page.dart';
 import 'package:salv/UI/widgets/buttons.dart';
 import 'package:salv/blocs/iklan/iklan_bloc.dart';
 import 'package:salv/common/common.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../blocs/auth/auth_bloc.dart';
 import '../../models/jual_limbah_form_model.dart';
@@ -45,6 +46,14 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
     }
   }
 
+void _launchMapsUrl(double lat, double lon) async {
+  final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lon';
+  if (await canLaunchUrlString(url)) {
+    await launchUrlString(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Detail Iklan")),
@@ -114,10 +123,12 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                                 .iklanBuyerDetail!
                                                                 .data
                                                                 .title,
-                                                                textAlign: TextAlign.center,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: blackTextStyle
                                                                 .copyWith(
-                                                                  fontSize: 16,
+                                                                    fontSize:
+                                                                        16,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600),
@@ -836,6 +847,77 @@ class _DetailIklanPageState extends State<DetailIklanPage> {
                                                                     FontWeight
                                                                         .w600),
                                                       )
+                                                    ],
+                                                  ),
+                                                  //location
+                                                  const SizedBox(
+                                                    height: 12,
+                                                  ),
+                                                  Divider(
+                                                    color: greyColor,
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 12,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "Detail Lokasi",
+                                                        style: blackTextStyle,
+                                                      ),
+
+                                                      ElevatedButton(
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            primary:
+                                                                greenColor, // Set the button's background color
+                                                            onPrimary: Colors
+                                                                .white, // Set the button's text color
+                                                          ),
+                                                          onPressed: () {
+                                                            print(state
+                                                                .iklanSellerDetail!
+                                                                .data
+                                                                .latitude);
+                                                                print(state.iklanSellerDetail!.data.longitude);
+                                                            _launchMapsUrl(
+                                                                state
+                                                                    .iklanSellerDetail!
+                                                                    .data
+                                                                    .latitude
+                                                                    ,
+                                                                state
+                                                                    .iklanSellerDetail!
+                                                                    .data
+                                                                    .longitude
+                                                                    );
+                                                          },
+                                                          child: Row(
+                                                            children: [
+                                                              Icon(Icons
+                                                                  .location_on),
+                                                              Text(
+                                                                  "Lihat lokasi")
+                                                            ],
+                                                          ))
+                                                      // Text(
+                                                      //   state.iklanSellerDetail!.data
+                                                      //               .additionalInformation !=
+                                                      //           ""
+                                                      //       ? state
+                                                      //           .iklanSellerDetail!
+                                                      //           .data
+                                                      //           .latitude.toString()
+                                                      //       : "-",
+                                                      //   style: blackTextStyle
+                                                      //       .copyWith(
+                                                      //           fontWeight:
+                                                      //               FontWeight
+                                                      //                   .w600),
+                                                      // )
                                                     ],
                                                   ),
                                                 ]),

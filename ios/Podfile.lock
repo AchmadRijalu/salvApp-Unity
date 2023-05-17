@@ -60,6 +60,8 @@ PODS:
   - permission_handler_apple (9.0.4):
     - Flutter
   - PromisesObjC (2.2.0)
+  - url_launcher_ios (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
@@ -74,6 +76,7 @@ DEPENDENCIES:
   - location (from `.symlinks/plugins/location/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -114,6 +117,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/ios"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
   camera_avfoundation: 3125e8cd1a4387f6f31c6c63abb8a55892a9eeeb
@@ -139,6 +144,7 @@ SPEC CHECKSUMS:
   path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
+  url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 

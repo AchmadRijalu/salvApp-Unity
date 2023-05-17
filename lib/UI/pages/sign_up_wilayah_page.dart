@@ -151,7 +151,7 @@ class _SignupWilayahPageState extends State<SignupWilayahPage> {
   bool validate() {
     if (selectedProvince == null ||
         selectedCity == null ||
-        selectedSubdistrict == null) {
+        selectedSubdistrict == null || _currentPosition == null) {
       return false;
     }
     return true;
@@ -516,10 +516,12 @@ class _SignupWilayahPageState extends State<SignupWilayahPage> {
                                       isloading = true;
                                     });
                                     await _getCurrentPosition();
-
+                                    
                                     setState(() {
                                       isloading = false;
                                     });
+                                    print(_currentPosition!.latitude.toString());
+                                    print(_currentPosition!.longitude.toString());
                                   },
                                   child: Column(
                                     crossAxisAlignment:
