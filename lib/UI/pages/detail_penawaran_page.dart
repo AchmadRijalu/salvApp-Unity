@@ -37,7 +37,6 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
       userType = authState.user!.type;
       userId = authState.user!.id;
     }
-    print("ID STATUS: ${widget.statusPenawaran}");
   }
 
   @override
@@ -1222,6 +1221,26 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
+                                            if (detailTransaksi.image != "" ||
+                                                detailTransaksi != null) ...[
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    top: 12, bottom: 12),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Image.network(
+                                                      detailTransaksi.image!,
+                                                      width: 200,
+                                                      height: 200,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ] else ...[
+                                              Container(),
+                                            ],
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment

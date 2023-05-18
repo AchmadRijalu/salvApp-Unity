@@ -70,7 +70,7 @@ class Userdata {
   final String? ward;
   final dynamic longitude;
   final dynamic latitude;
-  final int? point;
+  final dynamic point;
 
   factory Userdata.fromJson(Map<String, dynamic> json) => Userdata(
         address: json["address"],

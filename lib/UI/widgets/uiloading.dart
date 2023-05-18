@@ -36,7 +36,7 @@ class UiLoading {
       color: Colors.black12,
       child: const SpinKitFadingCircle(
         size: 50,
-        color: Color(0xFF005DE9),
+        color: Color(0XFF1E6F5C),
       ),
     );
   }

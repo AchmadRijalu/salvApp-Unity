@@ -41,7 +41,7 @@ class IklanSellerDetailData {
     double longitude;
     int maximumWeight;
     int minimumWeight;
-    int ongoingWeight;
+    dynamic ongoingWeight;
     int price;
     int retrievalSystem;
     String status;

@@ -21,7 +21,7 @@ class JualLimbahForm {
     String advertisementId;
     int weight;
     String location;
-    String image;
+    dynamic image;
 
     factory JualLimbahForm.fromJson(Map<String, dynamic> json) => JualLimbahForm(
         userId: json["user_id"],

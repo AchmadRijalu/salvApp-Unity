@@ -105,7 +105,7 @@ class _IklanPageState extends State<IklanPage> {
                   await pictureRef.putString(dataUrl,
                       format: PutStringFormat.dataUrl);
                   String downloadUrl = await pictureRef.getDownloadURL();
-                  print(downloadUrl);
+                  
                   final response = await http.post(
                       Uri.parse("https://salv.cloud/image/upload"),
                       headers: {
@@ -206,8 +206,8 @@ class _IklanPageState extends State<IklanPage> {
                                           getAdvertisementId = iklan.id;
                                           return ListIklan(
                                             progressBarIndicator:
-                                                iklan.ongoingWeight /
-                                                    iklan.requestedWeight,
+                                                (iklan.ongoingWeight /
+                                                    iklan.requestedWeight),
                                             title: iklan.title,
                                             price: iklan.price,
                                             onGoingWeight: iklan.ongoingWeight,

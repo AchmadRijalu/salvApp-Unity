@@ -43,7 +43,7 @@ class IklanBuyerData {
 
     String endDate;
     String id;
-    int ongoingWeight;
+    double ongoingWeight;
     int requestedWeight;
     String title;
 
