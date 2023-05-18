@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
           JualLimbahSuccessPage.routeName: (context) => JualLimbahSuccessPage(),
           DetailPenawaranPage.routeName: (context) => DetailPenawaranPage(),
           DetailEdukasiPage.routeName: (context) => DetailEdukasiPage(),
-          PencairanPoinPage.routeName: (context) => PencairanPoinPage(),
+          PencairanPoinPage.routeName: (context) => PencairanPoinPage(point: ModalRoute.of(context)!.settings.arguments as int,),
           UbahDataProfilPage.routeName: (context) => UbahDataProfilPage(),
           UbahDataAlamatPage.routeName: (context) => UbahDataAlamatPage(),
           BerandaDetailPage.routeName: (context) => BerandaDetailPage(),

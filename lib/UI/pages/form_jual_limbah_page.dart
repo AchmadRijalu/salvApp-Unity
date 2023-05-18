@@ -52,8 +52,6 @@ class _FormJualLimbahPageState extends State<FormJualLimbahPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(widget.adsId);
-    print(widget.userId);
   }
 
   @override
@@ -182,6 +180,7 @@ class _FormJualLimbahPageState extends State<FormJualLimbahPage> {
                             source: ImageSource.camera);
                         setState(() {
                           file = file;
+                          print(file.name);
                         });
                         // print('${file?.path}');
                       },
@@ -221,8 +220,10 @@ class _FormJualLimbahPageState extends State<FormJualLimbahPage> {
                             userId: widget.userId!,
                             advertisementId: widget.adsId!,
                             weight: int.parse(penghasilanValue),
-                            location: lokasiController.text);
-
+                            location: lokasiController.text,
+                            image: file!.name
+                            );
+                        
                         context
                             .read<TransaksiBloc>()
                             .add(CreateTransaksiSeller(jualLimbahForm));

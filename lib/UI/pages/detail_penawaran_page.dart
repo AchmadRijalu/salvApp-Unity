@@ -419,7 +419,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                         height: 50,
                                         child: TextButton(
                                           style: TextButton.styleFrom(
-                                              backgroundColor: blueColor,
+                                              backgroundColor: greenColor,
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -431,7 +431,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           },
                                           child: Text(
                                             "Batalkan Penawaran",
-                                            style: blackTextStyle.copyWith(
+                                            style: whiteTextStyle.copyWith(
                                                 fontSize: 16,
                                                 fontWeight: semiBold),
                                           ),
@@ -488,7 +488,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                     children: <TextSpan>[
                                       TextSpan(
                                           text: "Penawaran Telah Dibatalkan!",
-                                          style: blackTextStyle.copyWith(
+                                          style: whiteTextStyle.copyWith(
                                               fontSize: 20,
                                               fontWeight: semiBold)),
                                     ],
@@ -1207,7 +1207,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                             var detailTransaksi =
                                 state.detailTransaksiSeller!.data;
                             return Flexible(
-                                flex: 4,
+                                flex: 3,
                                 child: Container(
                                   child: Column(
                                       crossAxisAlignment:

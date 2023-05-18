@@ -54,6 +54,7 @@ class AuthService {
         } else {
           final user = Userdata.fromJson(jsonDecode(response.body)['data']);
           print("USER : ${user.id}");
+          print("USER : ${user.point}");
           print("Type : ${user.type}");
           print("TOKEN : ${user.token}");
           await storeCredentialToLocal(user);
