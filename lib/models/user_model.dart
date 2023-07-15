@@ -50,7 +50,8 @@ class Userdata {
      this.username,
      this.ward,
      this.latitude,
-     this.longitude
+     this.longitude,
+     this.point
   });
 
   final String? address;
@@ -69,6 +70,7 @@ class Userdata {
   final String? ward;
   final dynamic longitude;
   final dynamic latitude;
+  final dynamic point;
 
   factory Userdata.fromJson(Map<String, dynamic> json) => Userdata(
         address: json["address"],
@@ -86,7 +88,8 @@ class Userdata {
         username: json["username"],
         ward: json["ward"],
         latitude: json["latitude"],
-        longitude: json["longitude"]
+        longitude: json["longitude"],
+        point: json["point"]
       );
 
   Map<String, dynamic> toJson() {
@@ -107,6 +110,7 @@ class Userdata {
     data['ward'] = ward;
     data['latitude'] = latitude;
     data['longitude'] = longitude;
+    data['point'] = point;
 
     return data;
   }

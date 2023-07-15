@@ -7,8 +7,10 @@ import '../widgets/buttons.dart';
 import '../widgets/forms.dart';
 
 class PencairanPoinPage extends StatelessWidget {
+
+  final int? point;
   static const routeName = '/pencairanpoin';
-  const PencairanPoinPage({super.key});
+  const PencairanPoinPage({super.key, required this.point});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class PencairanPoinPage extends StatelessWidget {
                           style: blueTextStyle.copyWith(
                               fontSize: 14, fontWeight: medium)),
                       Text(
-                        "Rp.10.000",
+                        "Rp.${point}",
                         style: blueTextStyle.copyWith(
                             fontSize: 14, fontWeight: medium),
                       )

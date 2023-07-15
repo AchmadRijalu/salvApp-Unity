@@ -46,9 +46,9 @@ class IklanSellerData {
     String category;
     String endDate;
     String id;
-    int ongoingWeight;
+    dynamic ongoingWeight;
     int price;
-    int requestedWeight;
+    dynamic requestedWeight;
     String title;
 
     factory IklanSellerData.fromJson(Map<String, dynamic> json) => IklanSellerData(

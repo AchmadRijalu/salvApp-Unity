@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +13,7 @@ import 'package:salv/UI/widgets/buttons.dart';
 import 'package:salv/UI/widgets/forms.dart';
 import 'package:salv/blocs/transaksi/transaksi_bloc.dart';
 import 'package:salv/firebase_options.dart';
+import 'package:salv/main.dart';
 
 import '../../common/common.dart';
 import '../../models/jual_limbah_form_model.dart';
@@ -46,14 +48,13 @@ class _FormJualLimbahPageState extends State<FormJualLimbahPage> {
   final TextEditingController lokasiController =
       TextEditingController(text: '');
 
-  var file;
+  XFile? file;
+  String downloadUrl = "";
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(widget.adsId);
-    print(widget.userId);
   }
 
   @override
@@ -182,7 +183,13 @@ class _FormJualLimbahPageState extends State<FormJualLimbahPage> {
                             source: ImageSource.camera);
                         setState(() {
                           file = file;
+                          print(file!.name);
                         });
+
+                        // ImagePicker imagePicker = ImagePicker();
+                        // file = await imagePicker.pickImage(
+                        //     source: ImageSource.camera);
+
                         // print('${file?.path}');
                       },
                     ),
@@ -190,25 +197,33 @@ class _FormJualLimbahPageState extends State<FormJualLimbahPage> {
                     CustomFilledButton(
                       title: "Kirim Penawaran",
                       onPressed: () async {
-                        await Firebase.initializeApp(
-                            options: DefaultFirebaseOptions.currentPlatform);
+                        initializeFirebase();
+                        final storageRef = FirebaseStorage.instance.ref();
+                        final pictureRef = storageRef.child(file!.path);
+                        String dataUrl = 'data:image/png;base64,' +
+                            base64Encode(File(file!.path).readAsBytesSync());
+
                         //Take the sending DateTime
-                        String photoName =
-                            DateTime.now().millisecondsSinceEpoch.toString();
+                        // String photoName =
+                        //     DateTime.now().millisecondsSinceEpoch.toString();
 
                         //Getting reference to storage root
                         Reference reference = FirebaseStorage.instance.ref();
                         Reference referenceDirectoryImages =
-                            reference.child('images');
+                            reference.child('image');
 
                         //Refer the image to be uploaded
-                        Reference referenceImage =
-                            referenceDirectoryImages.child('${file?.name}');
+                        // Reference referenceImage =
+                        //     referenceDirectoryImages.child('${file?.name}');
 
                         //Store the file
                         if (file != null) {
                           try {
-                            referenceImage.putFile(File(file!.path));
+                            await pictureRef.putString(dataUrl,
+                                format: PutStringFormat.dataUrl);
+                            downloadUrl = await pictureRef.getDownloadURL();
+
+                            print("Filenya adalah : ${downloadUrl}");
 
                             //If Success:
                             // referenceImage.getDownloadURL();
@@ -221,7 +236,8 @@ class _FormJualLimbahPageState extends State<FormJualLimbahPage> {
                             userId: widget.userId!,
                             advertisementId: widget.adsId!,
                             weight: int.parse(penghasilanValue),
-                            location: lokasiController.text);
+                            location: lokasiController.text,
+                            image: downloadUrl);
 
                         context
                             .read<TransaksiBloc>()

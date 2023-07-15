@@ -37,7 +37,6 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
       userType = authState.user!.type;
       userId = authState.user!.id;
     }
-    print("ID STATUS: ${widget.statusPenawaran}");
   }
 
   @override
@@ -419,7 +418,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                         height: 50,
                                         child: TextButton(
                                           style: TextButton.styleFrom(
-                                              backgroundColor: blueColor,
+                                              backgroundColor: greenColor,
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -431,7 +430,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                           },
                                           child: Text(
                                             "Batalkan Penawaran",
-                                            style: blackTextStyle.copyWith(
+                                            style: whiteTextStyle.copyWith(
                                                 fontSize: 16,
                                                 fontWeight: semiBold),
                                           ),
@@ -488,7 +487,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                     children: <TextSpan>[
                                       TextSpan(
                                           text: "Penawaran Telah Dibatalkan!",
-                                          style: blackTextStyle.copyWith(
+                                          style: whiteTextStyle.copyWith(
                                               fontSize: 20,
                                               fontWeight: semiBold)),
                                     ],
@@ -840,6 +839,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                           if (state is DetailTransaksiBuyerGetSuccess) {
                             var detailTransaksi =
                                 state.detailTransaksiBuyer!.data;
+                                print(detailTransaksi.image);
                             return Flexible(
                                 flex: 4,
                                 child: Container(
@@ -847,6 +847,26 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
+                                       if (detailTransaksi.image != "" ||
+                                                detailTransaksi != null) ...[
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    top: 12, bottom: 12),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Image.network(
+                                                      detailTransaksi.image!,
+                                                      width: 200,
+                                                      height: 200,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ] else ...[
+                                              Container(),
+                                            ],
                                         Container(
                                           width: double.infinity,
                                           padding: const EdgeInsets.symmetric(
@@ -1207,7 +1227,7 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                             var detailTransaksi =
                                 state.detailTransaksiSeller!.data;
                             return Flexible(
-                                flex: 4,
+                                flex: 3,
                                 child: Container(
                                   child: Column(
                                       crossAxisAlignment:
@@ -1222,6 +1242,26 @@ class _DetailPenawaranPageState extends State<DetailPenawaranPage> {
                                               borderRadius:
                                                   BorderRadius.circular(8)),
                                           child: Column(children: [
+                                            if (detailTransaksi.image != "" ||
+                                                detailTransaksi != null) ...[
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    top: 12, bottom: 12),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Image.network(
+                                                      detailTransaksi.image!,
+                                                      width: 200,
+                                                      height: 200,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ] else ...[
+                                              Container(),
+                                            ],
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment

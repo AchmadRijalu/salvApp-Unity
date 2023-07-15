@@ -18,7 +18,7 @@ import 'holder_page.dart';
 
 class DetailIklanPage extends StatefulWidget {
   final String? advertisementId;
-  final dynamic? iklanProgress;
+  final dynamic iklanProgress;
   final dynamic maxProgress;
   DetailIklanPage(
       {super.key, this.advertisementId, this.iklanProgress, this.maxProgress});

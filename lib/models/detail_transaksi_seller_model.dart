@@ -48,19 +48,21 @@ class DetailTransaksiSellerData {
     required this.title,
     required this.totalPrice,
     required this.weight,
+    this.image
   });
 
   String additionalInformation;
   String category;
   String id;
   String location;
-  int maximumWeight;
-  int minimumWeight;
+  dynamic maximumWeight;
+  dynamic minimumWeight;
   int price;
   int retrievalSystem;
   String title;
   int totalPrice;
-  int weight;
+  dynamic weight;
+  dynamic image;
 
   factory DetailTransaksiSellerData.fromJson(Map<String, dynamic> json) =>
       DetailTransaksiSellerData(
@@ -75,6 +77,7 @@ class DetailTransaksiSellerData {
         title: json["title"],
         totalPrice: json["total_price"],
         weight: json["weight"],
+        image: json["image"]
       );
 
   Map<String, dynamic> toJson() => {
@@ -89,5 +92,6 @@ class DetailTransaksiSellerData {
         "title": title,
         "total_price": totalPrice,
         "weight": weight,
+        "image":image
       };
 }

@@ -40,7 +40,9 @@ import 'blocs/auth/auth_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  initializeFirebase();
   runApp(const MyApp());
 }
 
@@ -97,7 +99,7 @@ class MyApp extends StatelessWidget {
           JualLimbahSuccessPage.routeName: (context) => JualLimbahSuccessPage(),
           DetailPenawaranPage.routeName: (context) => DetailPenawaranPage(),
           DetailEdukasiPage.routeName: (context) => DetailEdukasiPage(),
-          PencairanPoinPage.routeName: (context) => PencairanPoinPage(),
+          PencairanPoinPage.routeName: (context) => PencairanPoinPage(point: ModalRoute.of(context)!.settings.arguments as int,),
           UbahDataProfilPage.routeName: (context) => UbahDataProfilPage(),
           UbahDataAlamatPage.routeName: (context) => UbahDataAlamatPage(),
           BerandaDetailPage.routeName: (context) => BerandaDetailPage(),

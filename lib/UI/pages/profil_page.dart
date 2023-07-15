@@ -97,13 +97,13 @@ class ProfilPage extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(
-                                context, PencairanPoinPage.routeName);
+                                context, PencairanPoinPage.routeName, arguments: state.user!.point);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Poin: Rp.0",
+                                "Poin: Rp.${state.user!.point!}",
                                 style: blackTextStyle.copyWith(
                                     fontSize: 18, fontWeight: medium),
                               ),

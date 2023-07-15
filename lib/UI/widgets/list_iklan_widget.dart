@@ -8,8 +8,7 @@ import 'package:salv/common/common.dart';
 class ListIklan extends StatelessWidget {
   dynamic onGoingWeight;
   dynamic requestedWeight;
-
-  dynamic? progressBarIndicator;
+  dynamic progressBarIndicator;
   dynamic price;
   String? title;
   String? category;
@@ -188,7 +187,7 @@ class ListIklanPabrik extends StatelessWidget {
   late String? title;
   late String? endDate;
   late String? tanggal;
-  late int? ongoing_weight;
+  late dynamic ongoing_weight;
   late int? requested_weight;
 
   dynamic? progressBarIndicator;
