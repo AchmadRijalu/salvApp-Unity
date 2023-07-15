@@ -1,4 +1,4 @@
-## UNITY UNY Competition
+## Amikom AMCC Competition
 
 
 
