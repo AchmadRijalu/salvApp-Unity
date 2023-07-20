@@ -23,6 +23,7 @@ class SplashPage extends StatelessWidget {
         listener: (context, state) {
           // TODO: implement listener
 
+          print("test");
           if (state is AuthSuccess) {
             Navigator.pushNamedAndRemoveUntil(context, HolderPage.routeName, (route) => false);
           }
